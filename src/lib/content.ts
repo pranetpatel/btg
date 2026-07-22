@@ -2,6 +2,22 @@ export const INSTAGRAM_URL = "https://www.instagram.com/bethegooduwo/";
 export const INSTAGRAM_HANDLE = "@bethegooduwo";
 export const LOGO = "/logowhite-removebg.png";
 
+/** Featured IG posts + local thumbnails (IG CDN thumbs are not publicly fetchable). */
+export const KINDNESS_MOMENT = {
+  href: "https://www.instagram.com/p/DZP8_7YFo56/",
+  image: "/kindnessnote.png",
+  alt: "Handwritten kindness note taped to wood",
+} as const;
+
+export const CAMPUS_MOMENT = {
+  href: "https://www.instagram.com/p/DZksVMoAMNU/",
+  image: "/campusmoment.png",
+  alt: "Campus street interview with a passerby",
+} as const;
+
+/** Second kindness note. Use once. Do not reuse beside kindnessnote.png. */
+export const KINDNESS_NOTE_2 = "/kindnessnote2.png";
+
 export const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "Who we are", href: "#about" },
@@ -91,9 +107,13 @@ export const VALUES = [
 
 /* ── Why Be The Good ─────────────────────────────────────────────────── */
 export const WHY_POINTS = [
-  { index: "01", title: "Show up. Give time.", image: null },
-  { index: "02", title: "Find your people.", image: null },
-  { index: "03", title: "Make someone's week.", image: null },
+  { index: "01", title: "Show up. Give time.", image: null as string | null },
+  { index: "02", title: "Find your people.", image: null as string | null },
+  {
+    index: "03",
+    title: "Make someone's week.",
+    image: KINDNESS_NOTE_2 as string | null,
+  },
 ] as const;
 
 /* ── Ways to get involved ────────────────────────────────────────────── */
@@ -141,13 +161,13 @@ export const INVOLVE_TAG_STYLES: Record<string, string> = {
 export const STORIES = [
   {
     kind: "Kindness note" as const,
-    body: "I hope you know how loved you are.",
-    meta: "Left on a windshield, Lot 15",
+    body: "Whats not meant for you will disappoint you until you understand.",
+    meta: "From the kindness drop · IG",
   },
   {
     kind: "Campus conversation" as const,
     body: "Who is your biggest inspiration?",
-    meta: "Street interviews",
+    meta: "Street interviews · IG",
   },
   {
     kind: "Program moment" as const,
@@ -156,8 +176,8 @@ export const STORIES = [
   },
   {
     kind: "Kindness note" as const,
-    body: "Glad you made it to class today.",
-    meta: "University College",
+    body: "The amount of beautiful things in your life depends on your ability to notice them.",
+    meta: "Taped on campus glass",
   },
   {
     kind: "Program moment" as const,

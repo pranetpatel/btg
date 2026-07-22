@@ -3,7 +3,7 @@
 **Org:** Be The Good (campus: Western University / UWO)  
 **Product:** Be The Good Care (caregiver burnout app)  
 **Handle:** [@bethegooduwo](https://www.instagram.com/bethegooduwo/)  
-**Assets:** `/public/logoblack.png`, `/public/logowhite.png`  
+**Assets:** see **§13 Media inventory** below  
 **Product media:** Add demo video + screenshots to `/public` when available (e.g. `bethegoodcare-demo.mp4`, UI stills)  
 **Purpose of this doc:** Shared foundation for website mockups, marketing, and sponsor conversations.
 
@@ -123,6 +123,7 @@ Match the social system: collegiate serif + clean sans + occasional script accen
 - Soft rounded pills for labels (“FOUNDER”, “CO PRESIDENT”)
 - Authentic campus photography (Weldon-style spaces, real students)
 - Handwritten kindness notes as proof of culture
+- Instagram glyph next to @bethegooduwo links (footer, CTAs, linked moments)
 
 ### Photography
 Prefer real Be The Good moments: kindness notes, street interviews, kit packing, campus hangouts. Avoid generic stock “holding hands over globe.”
@@ -278,4 +279,37 @@ These override the longer sample copy above wherever they conflict. The public s
 
 ---
 
-*Drafted for website design exploration. App name confirmed: Be The Good Care. §12 added from build feedback: fewer words, CTA-led, transparent logo, no em-dashes, no AI filler. Update when donation path and food bank partner are confirmed.*
+---
+
+## 13. Media inventory (`/public`)
+
+### Logos
+| File | Use |
+| --- | --- |
+| `logowhite-removebg.png` | **Primary.** Transparent mark for nav, hero, menu, closing, footer |
+| `logowhite.png` | Backup only (white box). Avoid on colored backgrounds |
+| `logoblack.png` | Backup only (dark box). Avoid on colored backgrounds |
+
+### Culture / campus photos (do not reuse the same file twice on one page)
+| File | Role on site | Instagram source |
+| --- | --- | --- |
+| `kindnessnote.png` | **Kindness moment** (About intro, right image). Linked to post | [IG post](https://www.instagram.com/p/DZP8_7YFo56/) |
+| `campusmoment.png` | **Campus moment** (About intro, left image). Linked to post | [IG post](https://www.instagram.com/p/DZksVMoAMNU/) |
+| `kindnessnote2.png` | **Why · 03 Make someone's week** only. Second note, different message | Local asset (not the kindness-moment post) |
+
+**Rule:** `kindnessnote.png` and `kindnessnote2.png` are different notes. Never place both as the same "kindness moment," and never reuse either file in a second slot on the same page.
+
+Instagram CDN thumbnails are not reliably fetchable without login. Prefer these local exports as thumbnails; keep the IG URLs as the click-through.
+
+### Icons (in code)
+| Icon | Where |
+| --- | --- |
+| Instagram glyph (`InstagramIcon`) | Footer follow CTA + icon button; labels on linked campus/kindness images |
+
+### Still needed
+- Be The Good Care demo video / UI screenshots
+- Kit packing / mentorship photos for pillars and involve cards
+
+---
+
+*Drafted for website design exploration. App name confirmed: Be The Good Care. §12: fewer words, CTA-led, transparent logo, no em-dashes, no AI filler. §13: media inventory + featured IG posts. Update when donation path and food bank partner are confirmed.*

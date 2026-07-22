@@ -6,6 +6,8 @@ import { RevealText } from "@/components/ui/RevealText";
 import { MaskReveal } from "@/components/ui/MaskReveal";
 import { ImageOrPlaceholder } from "@/components/ui/ImageOrPlaceholder";
 import { Sparkle } from "@/components/ui/Sparkle";
+import { InstagramIcon } from "@/components/ui/InstagramIcon";
+import { CAMPUS_MOMENT, KINDNESS_MOMENT } from "@/lib/content";
 
 export function Introduction() {
   return (
@@ -35,26 +37,50 @@ export function Introduction() {
           </p>
         </Reveal>
 
-        {/* Dual image mask reveals */}
+        {/* Dual image mask reveals · linked to Instagram posts */}
         <div className="mt-14 grid gap-5 sm:grid-cols-5">
           <MaskReveal className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl sm:col-span-3">
-            <ImageOrPlaceholder
-              src={null}
-              alt="Students on campus"
-              label="Campus moment"
-              className="h-full w-full"
-            />
+            <a
+              href={CAMPUS_MOMENT.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group absolute inset-0 block"
+              aria-label="Campus moment on Instagram"
+            >
+              <ImageOrPlaceholder
+                src={CAMPUS_MOMENT.image}
+                alt={CAMPUS_MOMENT.alt}
+                label="Campus moment"
+                className="h-full w-full transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+              <span className="absolute bottom-4 left-4 z-10 inline-flex items-center gap-2 rounded-full bg-ink/70 px-3 py-1.5 text-xs font-medium text-cream backdrop-blur-sm">
+                <InstagramIcon className="h-3.5 w-3.5" />
+                Campus moment
+              </span>
+            </a>
           </MaskReveal>
           <MaskReveal
             delay={0.12}
             className="relative aspect-[4/5] w-full self-end overflow-hidden rounded-3xl sm:col-span-2"
           >
-            <ImageOrPlaceholder
-              src={null}
-              alt="A handwritten kindness note"
-              label="Kindness note"
-              className="h-full w-full"
-            />
+            <a
+              href={KINDNESS_MOMENT.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group absolute inset-0 block"
+              aria-label="Kindness note on Instagram"
+            >
+              <ImageOrPlaceholder
+                src={KINDNESS_MOMENT.image}
+                alt={KINDNESS_MOMENT.alt}
+                label="Kindness note"
+                className="h-full w-full transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+              <span className="absolute bottom-4 left-4 z-10 inline-flex items-center gap-2 rounded-full bg-ink/70 px-3 py-1.5 text-xs font-medium text-cream backdrop-blur-sm">
+                <InstagramIcon className="h-3.5 w-3.5" />
+                Kindness note
+              </span>
+            </a>
           </MaskReveal>
         </div>
 

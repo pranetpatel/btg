@@ -7,6 +7,7 @@ import { RevealText } from "@/components/ui/RevealText";
 import { BrandTicker } from "@/components/ui/BrandTicker";
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL, LOGO } from "@/lib/content";
 import { useInvolve } from "@/lib/involve-context";
+import { InstagramIcon } from "@/components/ui/InstagramIcon";
 
 export function ClosingCta() {
   const { openInvolve } = useInvolve();
@@ -64,8 +65,9 @@ export function ClosingCta() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="px-3 py-4 text-sm font-medium text-purple underline underline-offset-4 transition-opacity hover:opacity-70"
+                className="inline-flex items-center gap-2 px-3 py-4 text-sm font-medium text-purple underline underline-offset-4 transition-opacity hover:opacity-70"
               >
+                <InstagramIcon className="h-4 w-4" />
                 Follow {INSTAGRAM_HANDLE}
               </a>
             </div>
