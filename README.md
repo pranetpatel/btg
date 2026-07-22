@@ -1,16 +1,19 @@
-# btg
+# btg — Capsules®
 
-Public repository for **btg**.
+A landing page concept inspired by [capsules.moyra.co](https://capsules.moyra.co/), built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
 
 ## Getting started
 
-Clone the repo:
-
 ```bash
-git clone https://github.com/pranetpatel/btg.git
-cd btg
+npm install
+npm run dev
 ```
 
-## License
+Open [http://localhost:3000](http://localhost:3000) to view it.
 
-See repository settings for license details.
+## Stack
+
+- [Next.js](https://nextjs.org) (App Router)
+- TypeScript
+- Tailwind CSS
+- [Framer Motion](https://www.framer.com/motion/) for scroll-triggered animation
