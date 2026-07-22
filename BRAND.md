@@ -1,21 +1,28 @@
 # Be The Good UWO — Branding & Messaging
 
 **Org:** Be The Good (campus: Western University / UWO)  
+**Product:** Be The Good Care (caregiver burnout app)  
 **Handle:** [@bethegooduwo](https://www.instagram.com/bethegooduwo/)  
 **Assets:** `/public/logoblack.png`, `/public/logowhite.png`  
+**Product media:** Add demo video + screenshots to `/public` when available (e.g. `bethegoodcare-demo.mp4`, UI stills)  
 **Purpose of this doc:** Shared foundation for website mockups, marketing, and sponsor conversations.
 
 ---
 
 ## 1. Who we are
 
+| Name | What it is |
+| --- | --- |
+| **Be The Good** / **Be The Good UWO** | The nonprofit / club |
+| **Be The Good Care** | The caregiver-burnout app (clinical settings) |
+
 Be The Good is a student-led nonprofit from Western University. We turn everyday kindness into real support — for caregivers, for people facing hardship in our community, and for students who need someone in their corner.
 
-We are not a glossy charity brand. We are campus-rooted, founder-led, and action-first: notes on windshields, kits for people without housing, mentorship for incoming students, and a clinical app built to ease caregiver burnout.
+We are not a glossy charity brand. We are campus-rooted, founder-led, and action-first: notes on windshields, kits for people without housing, mentorship for incoming students, and **Be The Good Care** — an app built to ease caregiver burnout in clinical settings.
 
 **One-line:** Student-led good, made practical — on campus and beyond.
 
-**Elevator (15 sec):** Be The Good is a Western University nonprofit that runs three things: support for caregiver burnout through an app we built, community care like food and hygiene kits for vulnerable people, and mentorship for incoming students. We’re looking for members, volunteers, and sponsors who want that work to grow.
+**Elevator (15 sec):** Be The Good is a Western University nonprofit that runs three things: Be The Good Care (our app for caregiver burnout), community care like food and hygiene kits for vulnerable people, and mentorship for incoming students. We’re looking for members, volunteers, and sponsors who want that work to grow.
 
 ---
 
@@ -63,7 +70,7 @@ If you join Be The Good, you don’t just “care” — you **do**: show up, gi
 - “Be the good.” / “Join the movement.”
 - “Even a few smiles count.”
 - “DM us to get involved.” (social) → on web: “Get involved” / “Partner with us”
-- Specifics: food kits, hygiene kits, mentorship, caregiver support, food bank volunteering
+- Specifics: Be The Good Care, food kits, hygiene kits, mentorship, food bank volunteering
 
 **Don’t say**
 - Tutoring / paid tutoring alternatives (explicit ask from leadership — keep mentorship broader)
@@ -72,7 +79,7 @@ If you join Be The Good, you don’t just “care” — you **do**: show up, gi
 - Founder’s personal out-of-pocket funding as website copy (use for internal sponsor pitch only)
 
 **Sample voice**
-> We’re Western students who believe kindness shouldn’t stop at a caption. We build support for caregivers, put kits in people’s hands, and walk with incoming students so nobody has to figure it out alone.
+> We’re Western students who believe kindness shouldn’t stop at a caption. We build Be The Good Care for caregivers, put kits in people’s hands, and walk with incoming students so nobody has to figure it out alone.
 
 ---
 
@@ -126,10 +133,10 @@ Prefer real Be The Good moments: kindness notes, street interviews, kit packing,
 
 Present **three main streams**. Mentorship stays; **do not mention tutoring**.
 
-### 1) Caregiver support (product)
-An app built with a friend to address **caregiver burnout in clinical settings**.  
-**Website framing:** Innovation from students who care about people who care for others.  
-**CTA:** Learn more / Follow the build / Get involved with the product team (if applicable).
+### 1) Be The Good Care (product)
+**Be The Good Care** — an app built with a friend to address **caregiver burnout in clinical settings**.  
+**Website framing:** Innovation from students who care about people who care for others. Name it clearly on the site; pair with product screenshots / demo video when assets land in `/public`.  
+**CTA:** Learn about Be The Good Care / Watch the demo / Get involved with the product team (if applicable).
 
 ### 2) Community care (direct aid)
 Raising money and resources for vulnerable populations — e.g. **food and hygiene kits** for people experiencing homelessness.  
@@ -160,14 +167,15 @@ These prove the vibe: human, local, shareable. Use in About / Stories / Feed mod
   1. Be the good.
   2. Kindness that shows up.
   3. Western students. Real support. Everyday good.
-- **Subhead:** Student-led nonprofit at Western University — caregiver support, community kits, and mentorship.
+- **Subhead:** Student-led nonprofit at Western University — Be The Good Care, community kits, and mentorship.
 - **CTAs:** Get involved · Sponsor the work · Follow @bethegooduwo
 
 ### About
 Founded by Arpi (Health Sciences), determined to bring out the best in herself and others. Impact can be small and still count — smiles, notes, kits, mentors.
 
 ### Programs section titles
-1. Care for the caregivers  
+1. Be The Good Care  
+
 2. Kits that meet people where they are  
 3. Mentorship that welcomes you in  
 
@@ -216,7 +224,7 @@ Each mockup should include at minimum:
 ## 10. Open questions (confirm with Arpi / Diya)
 
 - Legal / registered charity status and donation path (e-transfer, Stripe, Western channels)?  
-- Official name of the caregiver app + any screenshots we can show?  
+- Be The Good Care demo video / screenshots for the site (add to `/public` when ready)  
 - Mentorship: open signup yet, or waitlist / “coming soon”?  
 - Food bank partner name (London / campus org)?  
 - Preferred contact email vs Instagram-only for now?  
@@ -229,7 +237,7 @@ Each mockup should include at minimum:
 **Nav:** Home · What we do · Get involved · Sponsor · Instagram  
 
 **Pillar blurbs (short)**  
-- *Caregivers:* An app built to ease burnout for caregivers in clinical settings.  
+- *Be The Good Care:* An app built to ease burnout for caregivers in clinical settings.  
 - *Community:* Food and hygiene kits — and the fundraising that makes them possible.  
 - *Mentorship:* Peer support for incoming students finding their footing at Western.  
 
@@ -247,4 +255,4 @@ Each mockup should include at minimum:
 
 ---
 
-*Drafted for website design exploration. Update this doc when Arpi confirms app name, donation path, and food bank partner.*
+*Drafted for website design exploration. App name confirmed: Be The Good Care. Update when donation path and food bank partner are confirmed.*

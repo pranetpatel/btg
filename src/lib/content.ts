@@ -1,142 +1,203 @@
+export const INSTAGRAM_URL = "https://www.instagram.com/bethegooduwo/";
+export const INSTAGRAM_HANDLE = "@bethegooduwo";
+
 export const NAV_LINKS = [
-  { label: "Welcome", href: "#welcome" },
-  { label: "Introduction", href: "#introduction" },
-  { label: "Houses", href: "#houses" },
-  { label: "Why Capsules®", href: "#why" },
-  { label: "Activities", href: "#activities" },
-  { label: "Feedback", href: "#feedback" },
+  { label: "Home", href: "#home" },
+  { label: "Who we are", href: "#about" },
+  { label: "What we do", href: "#pillars" },
+  { label: "Campus", href: "#campus" },
+  { label: "Get involved", href: "#involved" },
+  { label: "Stories", href: "#stories" },
 ] as const;
 
-export type Capsule = {
-  slug: "classic" | "terrace" | "desert";
+/* ── Three pillars (BRAND.md §6) — replaces Capsules "Houses" ─────────── */
+export type Pillar = {
+  slug: "care" | "community" | "mentorship";
   name: string;
+  tagline: string;
   description: string;
   image: string | null;
-  squareFootage: string;
-  bed: string;
-  shiftingWindow: boolean;
-  airCondition: boolean;
-  jacuzzi: boolean;
-  terrace: boolean;
-  pricePerNight: number;
+  status: "Live" | "Active" | "Ongoing";
+  detail: string;
+  points: { label: string; value: string }[];
+  ctaLabel: string;
+  ctaPurpose: InvolvePurpose;
 };
 
-export const CAPSULES: Capsule[] = [
+export type InvolvePurpose =
+  | "general"
+  | "volunteer"
+  | "mentor"
+  | "sponsor"
+  | "care";
+
+export const PILLARS: Pillar[] = [
   {
-    slug: "classic",
-    name: "Classic Capsule®",
+    slug: "care",
+    name: "Be The Good Care",
+    tagline: "Innovation from students who care about the people who care.",
     description:
-      "Classic Capsule® boasts refined aesthetics and a modern interior, creating an intimate retreat in a desert landscape.",
+      "An app built with a friend to ease caregiver burnout in clinical settings — support for the people who spend their days supporting everyone else.",
     image: null,
-    squareFootage: "22m2",
-    bed: "King Size",
-    shiftingWindow: true,
-    airCondition: true,
-    jacuzzi: true,
-    terrace: false,
-    pricePerNight: 2000,
+    status: "Live",
+    detail:
+      "Caregivers in clinical settings carry an invisible weight. Be The Good Care is our answer: a tool designed to lighten that load, built by students who believe technology should show up where it's needed most. Demo video and screenshots land here as the product team ships.",
+    points: [
+      { label: "Built for", value: "Clinical caregivers" },
+      { label: "Focus", value: "Burnout & wellbeing" },
+      { label: "Stage", value: "In active build" },
+      { label: "Made by", value: "Students + a friend" },
+    ],
+    ctaLabel: "Get involved with the product",
+    ctaPurpose: "care",
   },
   {
-    slug: "terrace",
-    name: "Terrace Capsule®",
+    slug: "community",
+    name: "Community care",
+    tagline: "Practical help, funded together.",
     description:
-      "The most prestige capsule with the biggest terrace and jacuzzi with an amazing view of Los Angeles.",
+      "Food and hygiene kits for people experiencing hardship — and the fundraising, from members and sponsors, that puts them into circulation.",
     image: null,
-    squareFootage: "30m2",
-    bed: "King Size",
-    shiftingWindow: true,
-    airCondition: true,
-    jacuzzi: true,
-    terrace: true,
-    pricePerNight: 2500,
+    status: "Active",
+    detail:
+      "Kindness that you can hold. We raise money and resources to build food and hygiene kits for vulnerable people across London, then get them into the right hands. Sponsors and members fund the work; volunteers pack and deliver it.",
+    points: [
+      { label: "What", value: "Food & hygiene kits" },
+      { label: "For", value: "People facing hardship" },
+      { label: "Fueled by", value: "Members & sponsors" },
+      { label: "Where", value: "London, ON" },
+    ],
+    ctaLabel: "Sponsor a kit",
+    ctaPurpose: "sponsor",
   },
   {
-    slug: "desert",
-    name: "Desert Capsule®",
+    slug: "mentorship",
+    name: "Mentorship",
+    tagline: "Belonging, from people who get it.",
     description:
-      "With its striking architecture and upscale amenities, Desert Capsule® offers an exclusive retreat in the heart of the desert.",
+      "Peer support for incoming students finding their footing at Western — guidance and a sense of belonging, no stigma attached.",
     image: null,
-    squareFootage: "28m2",
-    bed: "King Size",
-    shiftingWindow: true,
-    airCondition: true,
-    jacuzzi: true,
-    terrace: false,
-    pricePerNight: 2250,
+    status: "Ongoing",
+    detail:
+      "Starting university is hard, and not everyone arrives with the same head start. Our mentors walk alongside incoming students — answering questions, making introductions, and making sure nobody has to figure it out alone. This is belonging and guidance, student to student.",
+    points: [
+      { label: "For", value: "Incoming students" },
+      { label: "About", value: "Belonging & guidance" },
+      { label: "From", value: "Peers who've been there" },
+      { label: "Intake", value: "Opening soon" },
+    ],
+    ctaLabel: "Become a mentor",
+    ctaPurpose: "mentor",
   },
 ];
 
-export const HOUSE_RULES = [
-  "Sustainable",
-  "Nature—Care",
-  "Smart",
-  "Privacy",
-  "Spacious",
-  "Glassed-in",
+/* ── Values shown as pills under the pillars header ───────────────────── */
+export const VALUES = [
+  "Student-led",
+  "Western-rooted",
+  "Action-first",
+  "Warm",
+  "Grassroots",
+  "For real people",
 ] as const;
 
-export const WHY_CAPSULES = [
+/* ── Why Be The Good (BRAND.md) — replaces "Why Capsules" ─────────────── */
+export const WHY_POINTS = [
   {
-    title: "Enjoy the view through—the wide panoramic glass window",
-    copy: "Get closer to the desert nature than ever before and admire this unique, breathtaking landscape.",
-    image:
-      "https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=1400&auto=format&fit=crop",
+    index: "01",
+    title: "You don't just care — you do.",
+    copy: "Join Be The Good and you show up: give time, build things, and make someone's week lighter. Even a few smiles count.",
+    image: null,
   },
   {
-    title: "Sound of silence—out of the city rush with completely privacy",
-    copy: "Here, every whisper of nature recharges your soul—your sanctuary of solitude awaits.",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Joshua_Tree_National_Park_2013.jpg/1920px-Joshua_Tree_National_Park_2013.jpg",
+    index: "02",
+    title: "Belonging that actually does something.",
+    copy: "A movement rooted at Western, warm and human — not a caption, not awareness-only. Find your people while you help others find theirs.",
+    image: null,
   },
   {
-    title: "Relax yourself in—Wooden Jacuzzi",
-    copy: "Let the natural textures and gentle bubbles transport you to a realm of pure, handcrafted bliss.",
+    index: "03",
+    title: "Real support, made practical.",
+    copy: "From an app for caregiver burnout to kits in people's hands to mentors for incoming students — small kindness, turned into sustained community support.",
     image: null,
   },
 ] as const;
 
-export const ACTIVITIES = [
+/* ── Ways to get involved — replaces Capsules "Activities" ────────────── */
+export const INVOLVE_WAYS = [
   {
-    title: "Buggy tours in the desert",
-    difficulty: "Easy" as const,
-    duration: "3-5h duration",
-    copy: "Explore the terrain on a guided buggy tour that takes you through the desert's vast and open landscapes.",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Imperial_Sand_Dunes_Recreation_Area_%2827971635674%29.jpg/1920px-Imperial_Sand_Dunes_Recreation_Area_%2827971635674%29.jpg",
-  },
-  {
-    title: "Breathtaking desert hikes",
-    difficulty: "Medium" as const,
-    duration: "8-12h duration",
-    copy: "Set out on a hike that offers clear trails, stunning views, and a closer look at the unique desert environment.",
+    title: "Volunteer with a crew",
+    tag: "Drop-in" as const,
+    meta: "Kit builds & kindness drops",
+    copy: "Pack food and hygiene kits, leave kindness notes across campus, and help at community projects. Come once or come often.",
     image: null,
+    purpose: "volunteer" as const,
   },
   {
-    title: "Exciting group rock climbing",
-    difficulty: "Hard" as const,
-    duration: "24h duration",
-    copy: "Climbing session on natural sandstone formations, designed to be both challenging and safe while fostering teamwork.",
+    title: "Food bank volunteering",
+    tag: "Coming soon" as const,
+    meta: "Regular shifts this year",
+    copy: "This year we're organizing regular food bank volunteer shifts. Join a crew and give a few hours where it counts.",
     image: null,
+    purpose: "volunteer" as const,
   },
-];
+  {
+    title: "Become a mentor",
+    tag: "Ongoing" as const,
+    meta: "Peer support",
+    copy: "Walk alongside an incoming student. Share what you know, make introductions, and help someone feel at home at Western.",
+    image: null,
+    purpose: "mentor" as const,
+  },
+  {
+    title: "Sponsor the work",
+    tag: "Partner" as const,
+    meta: "For sponsors & local partners",
+    copy: "Fund kits, campus kindness projects, and student-led programs. Get real stories — and visibility — to show for it.",
+    image: null,
+    purpose: "sponsor" as const,
+  },
+] as const;
 
-export const REVIEWS = [
+export const INVOLVE_TAG_STYLES: Record<string, string> = {
+  "Drop-in": "bg-lavender/25 text-lavender",
+  Ongoing: "bg-lavender/25 text-lavender",
+  "Coming soon": "bg-gold/20 text-gold",
+  Partner: "bg-cream text-purple",
+};
+
+/* ── Stories / campus culture — replaces "Reviews" ────────────────────
+   No invented testimonials. These are real program moments and clearly
+   labeled placeholders for content that lands as the club documents it. */
+export const STORIES = [
   {
-    quote:
-      "Staying at Capsules® in the California desert redefined my retreat — modern design meets nature, and every sunset feels like a serene masterpiece.",
-    name: "Marcus Simpson",
-    location: "New York",
+    kind: "Kindness note" as const,
+    body: "I hope you know how loved you are.",
+    meta: "Left on a windshield in Lot 15",
   },
   {
-    quote:
-      "Capsules® offered the perfect escape — sleek, modern spaces surrounded by desert stillness. Each moment felt peaceful, grounded, and truly unique.",
-    name: "Lena Morrison",
-    location: "Los Angeles",
+    kind: "Campus conversation" as const,
+    body: "Who is your biggest inspiration in life?",
+    meta: "From our street interviews",
   },
   {
-    quote:
-      "Capsules® was the perfect desert hideaway — stylish, peaceful, and fully surrounded by stunning views day and night.",
-    name: "Jason Whitaker",
-    location: "San Francisco",
+    kind: "Program moment" as const,
+    body: "A morning packing food & hygiene kits with the crew.",
+    meta: "Community care — placeholder for photo",
   },
-];
+  {
+    kind: "Kindness note" as const,
+    body: "Someone is glad you made it to class today.",
+    meta: "Kindness drop, University College",
+  },
+  {
+    kind: "Program moment" as const,
+    body: "First mentor–mentee coffee of the term.",
+    meta: "Mentorship — placeholder for photo",
+  },
+  {
+    kind: "Campus conversation" as const,
+    body: "What's one small kindness that changed your week?",
+    meta: "From our street interviews",
+  },
+] as const;

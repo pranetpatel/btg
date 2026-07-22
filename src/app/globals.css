@@ -1,20 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --color-cream: #f4efe7;
-  --color-taupe: #b1a696;
-  --color-ink: #181717;
-  --color-espresso: #2a2725;
-  --color-espresso-deep: #332e2b;
+  /* Be The Good — Western collegiate palette (see BRAND.md §5) */
+  --color-cream: #f7f3ec;
+  --color-lavender: #c9b8e8;
+  --color-lavender-soft: #ede6f7;
+  --color-purple: #4f2683;
+  --color-purple-deep: #351a58;
+  --color-gold: #c9a227;
+  --color-ink: #1a1224;
+  /* muted text token used on dark/purple backgrounds */
+  --color-mist: #b7a6d6;
 }
 
 @theme inline {
   --color-cream: var(--color-cream);
-  --color-taupe: var(--color-taupe);
+  --color-lavender: var(--color-lavender);
+  --color-lavender-soft: var(--color-lavender-soft);
+  --color-purple: var(--color-purple);
+  --color-purple-deep: var(--color-purple-deep);
+  --color-gold: var(--color-gold);
   --color-ink: var(--color-ink);
-  --color-espresso: var(--color-espresso);
-  --color-espresso-deep: var(--color-espresso-deep);
-  --font-sans: "Host Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --color-mist: var(--color-mist);
+  --font-sans: var(--font-sans-next), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif-next), ui-serif, Georgia, "Times New Roman", serif;
+  --font-script: var(--font-script-next), ui-serif, cursive;
 }
 
 html {
@@ -25,18 +35,27 @@ body {
   font-family: var(--font-sans);
 }
 
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
 ::selection {
-  background: var(--color-ink);
+  background: var(--color-purple);
   color: var(--color-cream);
 }
 
 .eyebrow {
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
+/* ── Marquee / ticker (brand "BE THE GOOD" border motif) ────────────── */
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -56,18 +75,24 @@ body {
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 32s linear infinite;
+}
+
+.animate-marquee-slow {
+  animation: marquee 60s linear infinite;
 }
 
 .animate-marquee-reverse {
-  animation: marquee-reverse 40s linear infinite;
+  animation: marquee-reverse 45s linear infinite;
 }
 
 .animate-marquee:hover,
+.animate-marquee-slow:hover,
 .animate-marquee-reverse:hover {
   animation-play-state: paused;
 }
 
+/* ── Scroll cue ─────────────────────────────────────────────────────── */
 @keyframes scroll-cue {
   0%,
   100% {
@@ -84,14 +109,33 @@ body {
   animation: scroll-cue 2.2s ease-in-out infinite;
 }
 
+/* ── Slow twinkle for gold sparkle motifs ───────────────────────────── */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
   .animate-marquee,
+  .animate-marquee-slow,
   .animate-marquee-reverse,
-  .animate-scroll-cue {
+  .animate-scroll-cue,
+  .animate-twinkle {
     animation: none;
   }
 }

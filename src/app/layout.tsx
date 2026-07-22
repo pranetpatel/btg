@@ -1,13 +1,34 @@
 import type { Metadata } from "next";
+import { DM_Sans, Fraunces, Great_Vibes } from "next/font/google";
 import "./globals.css";
-import { ReservationProvider } from "@/lib/reservation-context";
-import { ReservationModal } from "@/components/ReservationModal";
+import { InvolveProvider } from "@/lib/involve-context";
+import { InvolveModal } from "@/components/InvolveModal";
 import { MotionProvider } from "@/components/MotionProvider";
 
+const sans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans-next",
+  display: "swap",
+});
+
+const serif = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-serif-next",
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const script = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-script-next",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Closer to Nature—Closer to Yourself | Capsules®",
+  title: "Be The Good — Kindness that shows up | Western University",
   description:
-    "Welcome to a world of wild California desert with Capsules®, where you will discover exquisite nature observing it from capsule houses, nestled in one of the most breathtaking destinations in the United States.",
+    "Be The Good is a student-led nonprofit at Western University. We turn everyday kindness into real support — Be The Good Care for caregiver burnout, community food & hygiene kits, and mentorship for incoming students.",
 };
 
 export default function RootLayout({
@@ -16,25 +37,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html
+      lang="en"
+      className={`h-full antialiased ${sans.variable} ${serif.variable} ${script.variable}`}
+    >
       <body className="min-h-full flex flex-col bg-cream text-ink font-sans">
         <MotionProvider>
-          <ReservationProvider>
+          <InvolveProvider>
             {children}
-            <ReservationModal />
-          </ReservationProvider>
+            <InvolveModal />
+          </InvolveProvider>
         </MotionProvider>
       </body>
     </html>
