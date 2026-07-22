@@ -291,13 +291,19 @@ These override the longer sample copy above wherever they conflict. The public s
 | `logoblack.png` | Backup only (dark box). Avoid on colored backgrounds |
 
 ### Culture / campus photos (do not reuse the same file twice on one page)
-| File | Role on site | Instagram source |
+| File | Role on site | Notes |
 | --- | --- | --- |
-| `kindnessnote.png` | **Kindness moment** (About intro, right image). Linked to post | [IG post](https://www.instagram.com/p/DZP8_7YFo56/) |
-| `campusmoment.png` | **Campus moment** (About intro, left image). Linked to post | [IG post](https://www.instagram.com/p/DZksVMoAMNU/) |
-| `kindnessnote2.png` | **Why · 03 Make someone's week** only. Second note, different message | Local asset (not the kindness-moment post) |
+| `kindnessnote.png` | **Kindness moment** (About intro, right). Linked to IG | [IG post](https://www.instagram.com/p/DZP8_7YFo56/) |
+| `campusmoment.png` | **Campus moment** (About intro, left). Linked to IG | [IG post](https://www.instagram.com/p/DZksVMoAMNU/) |
+| `kindnessnote2.png` | **Why · 03 Make someone's week** | Second note. Do not reuse |
+| `campusmoments2.png` | **Why · 01 Show up. Give time.** | Note hand-off |
+| `campusmoments3.png` | **Why · 02 Find your people.** | Library / lounge interview |
+| `campusmoments4.jpeg` | **Campus** section hero | USC / Western portrait |
+| `campusmoments5.jpeg` | **Pillar · Community care** | Outdoor campus portrait |
+| `campusmoments6.jpeg` | **Pillar · Be The Good Care** | Concrete-wall portrait |
+| `campusmoments7.jpeg` | **Pillar · Mentorship** | Atrium portrait |
 
-**Rule:** `kindnessnote.png` and `kindnessnote2.png` are different notes. Never place both as the same "kindness moment," and never reuse either file in a second slot on the same page.
+**Rule:** Each photo file is used in **one** slot on the homepage. `kindnessnote.png` and `kindnessnote2.png` are different notes. Never reuse either.
 
 Instagram CDN thumbnails are not reliably fetchable without login. Prefer these local exports as thumbnails; keep the IG URLs as the click-through.
 
@@ -308,7 +314,7 @@ Instagram CDN thumbnails are not reliably fetchable without login. Prefer these 
 
 ### Still needed
 - Be The Good Care demo video / UI screenshots
-- Kit packing / mentorship photos for pillars and involve cards
+- Dedicated kit packing photos (pillars currently use campus portraits as stand-ins)
 
 ---
 

@@ -18,6 +18,37 @@ export const CAMPUS_MOMENT = {
 /** Second kindness note. Use once. Do not reuse beside kindnessnote.png. */
 export const KINDNESS_NOTE_2 = "/kindnessnote2.png";
 
+/**
+ * Extra campus moments. Each file is used once on the homepage.
+ * Do not reuse a path that is already assigned below.
+ */
+export const CAMPUS_MOMENTS = {
+  noteHandOff: {
+    image: "/campusmoments2.png",
+    alt: "Handing a kindness note in the mall",
+  },
+  libraryInterview: {
+    image: "/campusmoments3.png",
+    alt: "Campus interview in the library lounge",
+  },
+  uscPortrait: {
+    image: "/campusmoments4.jpeg",
+    alt: "Student at Western University Students Council",
+  },
+  outdoorPortrait: {
+    image: "/campusmoments5.jpeg",
+    alt: "Student smiling outside a glass campus building",
+  },
+  concretePortrait: {
+    image: "/campusmoments6.jpeg",
+    alt: "Student smiling against a concrete campus wall",
+  },
+  atriumPortrait: {
+    image: "/campusmoments7.jpeg",
+    alt: "Student smiling in a bright campus atrium",
+  },
+} as const;
+
 export const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "Who we are", href: "#about" },
@@ -52,7 +83,7 @@ export const PILLARS: Pillar[] = [
     slug: "care",
     name: "Be The Good Care",
     blurb: "An app for caregiver burnout.",
-    image: null,
+    image: CAMPUS_MOMENTS.concretePortrait.image,
     status: "Live",
     detail:
       "A tool built with a friend to ease burnout for caregivers in clinical settings. Demo and screenshots land here soon.",
@@ -68,7 +99,7 @@ export const PILLARS: Pillar[] = [
     slug: "community",
     name: "Community care",
     blurb: "Food and hygiene kits.",
-    image: null,
+    image: CAMPUS_MOMENTS.outdoorPortrait.image,
     status: "Active",
     detail:
       "We raise money and build kits for people facing hardship across London, then get them into the right hands.",
@@ -84,7 +115,7 @@ export const PILLARS: Pillar[] = [
     slug: "mentorship",
     name: "Mentorship",
     blurb: "Peer support for new students.",
-    image: null,
+    image: CAMPUS_MOMENTS.atriumPortrait.image,
     status: "Ongoing",
     detail:
       "Mentors who walk alongside incoming students. Belonging and guidance, from people who have been there.",
@@ -107,8 +138,16 @@ export const VALUES = [
 
 /* ── Why Be The Good ─────────────────────────────────────────────────── */
 export const WHY_POINTS = [
-  { index: "01", title: "Show up. Give time.", image: null as string | null },
-  { index: "02", title: "Find your people.", image: null as string | null },
+  {
+    index: "01",
+    title: "Show up. Give time.",
+    image: CAMPUS_MOMENTS.noteHandOff.image as string | null,
+  },
+  {
+    index: "02",
+    title: "Find your people.",
+    image: CAMPUS_MOMENTS.libraryInterview.image as string | null,
+  },
   {
     index: "03",
     title: "Make someone's week.",
