@@ -307,19 +307,21 @@ These override the longer sample copy above wherever they conflict. The public s
 
 ### Version B (`/v2` — Campus Warmth) photo map
 
-Version B is a second design direction (route `/v2`). The **same no-reuse rule** applies: each file is used in **one** slot on `/v2`. The scroll-grid hero pulls the "moment" culture photos to the top; portraits and the second note keep their sections. Assignments differ from the homepage (`/`) as noted.
+Version B is a second design direction (route `/v2`). On `/v2` the **scroll-grid hero is the only place real photos appear** — every culture photo in `/public` (logos excluded, all nine) is a small tile in the reveal grid, where the current low-res exports still read fine. The big center that scales up to fill the screen is a **solid brand color, not a photo** (a full-bleed low-res image looks rough). Every other section (**pillars, campus, why**) uses the shared `ImageOrPlaceholder`, kept **constant across the whole page** until stronger assets land. Because all photos are consumed by the hero, no file repeats elsewhere on `/v2`.
 
-| File | Slot on `/v2` | Differs from `/`? |
-| --- | --- | --- |
-| `campusmoment.png` | **Hero** scroll-grid center (the image that shrinks into the grid). Linked to IG | Yes — was About intro on `/` |
-| `kindnessnote.png` | **Hero** scroll-grid tile | Yes — was About intro on `/` |
-| `campusmoments2.png` | **Hero** scroll-grid tile | Yes — was Why · 01 on `/` |
-| `campusmoments3.png` | **Hero** scroll-grid tile | Yes — was Why · 02 on `/` |
-| `campusmoments6.jpeg` | **Pillar · Be The Good Care** | Same |
-| `campusmoments5.jpeg` | **Pillar · Community care** | Same |
-| `campusmoments7.jpeg` | **Pillar · Mentorship** | Same |
-| `campusmoments4.jpeg` | **Campus** section portrait | Same |
-| `kindnessnote2.png` | **Why** featured note | Same (Why · 03 on `/`) |
+| File | Slot on `/v2` |
+| --- | --- |
+| `campusmoment.png` | Hero grid tile (col 1, row 1) |
+| `kindnessnote.png` | Hero grid tile (col 2, row 2) |
+| `campusmoments2.png` | Hero grid tile (col 3, row 1) |
+| `campusmoments3.png` | Hero grid tile (col 5, row 1) |
+| `campusmoments4.jpeg` | Hero grid tile (col 1, row 2) |
+| `campusmoments5.jpeg` | Hero grid tile (col 4, row 2) |
+| `campusmoments6.jpeg` | Hero grid tile (col 2, row 3) |
+| `campusmoments7.jpeg` | Hero grid tile (col 4, row 3) |
+| `kindnessnote2.png` | Hero grid tile (col 3, row 3) |
+| _(none)_ | **Center scaler** = solid purple gradient block |
+| _(none)_ | **Pillars / Campus / Why** = constant `ImageOrPlaceholder` |
 
 ### Version C (`/v3` — Action Impact) photo map
 
@@ -337,7 +339,7 @@ Version C is the third design direction (route `/v3`): a scroll-driven 3D cube g
 | `campusmoments2.png` | **s7 · Get involved / Sponsor** cube face | Yes — was Why · 01 on `/` |
 | `kindnessnote2.png` | **s8 · Closing** cube face | Same (Why · 03 on `/`) |
 
-The rest of the hero grid uses **decorative brand tiles** (lavender / gold / purple panels with sparkles, hearts, and a "be the good" script) — these are brand texture, not photo slots, so they do not consume the media inventory. Real product shots still surface as labeled `ImageOrPlaceholder` tiles in the pillar cards until assets land. Hero photo assignments live in `src/lib/content.ts` under `V2_HERO`.
+On `/v2` the remaining hero-grid cells use **decorative brand tiles** (lavender / gold / purple panels with sparkles, hearts, and a "be the good" script) — brand texture, not photo slots, so they do not consume the media inventory. The `/v2` hero photo list lives in `src/lib/content.ts` under `V2_HERO_PHOTOS`.
 
 Instagram CDN thumbnails are not reliably fetchable without login. Prefer these local exports as thumbnails; keep the IG URLs as the click-through.
 

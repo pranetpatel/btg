@@ -37,8 +37,10 @@ export function PillarsV2() {
               className="group flex h-full flex-col overflow-hidden rounded-[2rem] bg-lavender-soft transition-transform duration-500 hover:-translate-y-1.5"
             >
               <div className="relative m-3 h-56 overflow-hidden rounded-3xl">
+                {/* Placeholder until real program shots land (constant across
+                    the site). Photos currently live only in the hero grid. */}
                 <ImageOrPlaceholder
-                  src={pillar.image}
+                  src={null}
                   alt={pillar.name}
                   label={pillar.name}
                   className="h-full w-full transition-transform duration-700 group-hover:scale-105"

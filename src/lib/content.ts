@@ -50,25 +50,25 @@ export const CAMPUS_MOMENTS = {
 } as const;
 
 /**
- * Version B (Campus Warmth) photo assignments. Each file is used once on
- * /v2. The scroll-grid hero takes the "moment" culture photos; pillars,
- * campus, and why keep their portrait/note slots (see PILLARS / CAMPUS_MOMENTS
- * / KINDNESS_NOTE_2 below). Keep in sync with BRAND.md §13.
+ * Version B (Campus Warmth) hero grid. The scroll-grid hero is the ONLY place
+ * real photos appear on /v2 — every culture photo in /public (logos excluded)
+ * is scattered through the reveal grid at small size, so the current low-res
+ * exports read fine. The center that scales up to fill the screen is a solid
+ * brand color, not a photo (a full-bleed low-res image looks rough). Every
+ * other /v2 section uses the shared ImageOrPlaceholder. Keep in sync with
+ * BRAND.md §13.
  */
-export const V2_HERO = {
-  /** Big center image that shrinks into the grid as you scroll. */
-  scaler: {
-    image: "/campusmoment.png",
-    href: "https://www.instagram.com/p/DZksVMoAMNU/",
-    alt: "Campus street interview with a passerby",
-  },
-  /** Real culture photos scattered through the reveal grid. */
-  tiles: [
-    { image: "/kindnessnote.png", alt: "Handwritten kindness note taped to wood" },
-    { image: "/campusmoments2.png", alt: "Handing a kindness note in the mall" },
-    { image: "/campusmoments3.png", alt: "Campus interview in the library lounge" },
-  ],
-} as const;
+export const V2_HERO_PHOTOS = [
+  { image: "/campusmoment.png", alt: "Campus street interview with a passerby" },
+  { image: "/kindnessnote.png", alt: "Handwritten kindness note taped to wood" },
+  { image: "/campusmoments2.png", alt: "Handing a kindness note in the mall" },
+  { image: "/campusmoments3.png", alt: "Campus interview in the library lounge" },
+  { image: "/campusmoments4.jpeg", alt: "Student at Western University Students Council" },
+  { image: "/campusmoments5.jpeg", alt: "Student smiling outside a glass campus building" },
+  { image: "/campusmoments6.jpeg", alt: "Student smiling against a concrete campus wall" },
+  { image: "/campusmoments7.jpeg", alt: "Student smiling in a bright campus atrium" },
+  { image: "/kindnessnote2.png", alt: "Handwritten kindness note taped on campus" },
+] as const;
 
 export const NAV_LINKS = [
   { label: "Home", href: "#home" },

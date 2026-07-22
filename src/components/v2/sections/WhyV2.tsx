@@ -1,16 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { KINDNESS_NOTE_2, WHY_POINTS } from "@/lib/content";
+import { WHY_POINTS } from "@/lib/content";
 import { Reveal } from "@/components/ui/Reveal";
 import { RevealText } from "@/components/ui/RevealText";
+import { ImageOrPlaceholder } from "@/components/ui/ImageOrPlaceholder";
 import { Sparkle } from "@/components/ui/Sparkle";
 
 /**
- * Version B "why": one featured kindness note beside a numbered list.
- * The note is the only culture photo free on /v2 (the other WHY_POINTS
- * images live in the hero grid), so this section reads note-forward.
+ * Version B "why": a featured note slot beside a numbered list. Photos live
+ * only in the hero grid on /v2, so this uses the constant placeholder.
  */
 export function WhyV2() {
   return (
@@ -18,17 +17,12 @@ export function WhyV2() {
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 md:items-center">
         <Reveal>
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem]">
-            <Image
-              src={KINDNESS_NOTE_2}
-              alt="Handwritten kindness note taped on campus"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
+            <ImageOrPlaceholder
+              src={null}
+              alt="Kindness note"
+              label="Kindness note"
+              className="h-full w-full"
             />
-            <span className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-cream/90 px-3 py-1.5 text-xs font-medium text-purple">
-              <Sparkle className="h-3.5 w-3.5" />
-              Kindness note
-            </span>
           </div>
         </Reveal>
 

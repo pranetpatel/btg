@@ -1,16 +1,14 @@
 "use client";
 
-import Image from "next/image";
-import { CAMPUS_MOMENTS } from "@/lib/content";
 import { Reveal } from "@/components/ui/Reveal";
 import { RevealText } from "@/components/ui/RevealText";
+import { ImageOrPlaceholder } from "@/components/ui/ImageOrPlaceholder";
 import { Sparkle } from "@/components/ui/Sparkle";
 import { useInvolve } from "@/lib/involve-context";
 
-/** Version B campus: purple panel wrapping a rounded portrait. */
+/** Version B campus: purple panel wrapping a rounded portrait slot. */
 export function CampusV2() {
   const { openInvolve } = useInvolve();
-  const shot = CAMPUS_MOMENTS.uscPortrait;
 
   return (
     <section id="campus" className="bg-cream px-4 py-20 md:px-6 md:py-28">
@@ -47,14 +45,15 @@ export function CampusV2() {
 
         <Reveal delay={0.1}>
           <div className="relative aspect-square w-full overflow-hidden rounded-3xl">
-            <Image
-              src={shot.image}
-              alt={shot.alt}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
+            {/* Placeholder until a campus photo lands. Photos live only in the
+                hero grid; placeholder style stays constant across the site. */}
+            <ImageOrPlaceholder
+              src={null}
+              alt="Western University campus"
+              label="Campus · Western"
+              className="h-full w-full"
             />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 via-ink/20 to-transparent p-6 pt-20">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 via-ink/20 to-transparent p-6 pt-20">
               <p className="font-serif text-lg text-cream">London, ON</p>
               <p className="mt-1 text-xs uppercase tracking-widest text-lavender">
                 Western University

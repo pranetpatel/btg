@@ -9,43 +9,50 @@ import {
   useReducedMotion,
   type MotionValue,
 } from "framer-motion";
-import { INSTAGRAM_HANDLE, INSTAGRAM_URL, LOGO, V2_HERO } from "@/lib/content";
+import {
+  INSTAGRAM_HANDLE,
+  INSTAGRAM_URL,
+  LOGO,
+  V2_HERO_PHOTOS,
+} from "@/lib/content";
 import { useInvolve } from "@/lib/involve-context";
 import { Sparkle } from "@/components/ui/Sparkle";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /* ── Grid layout ──────────────────────────────────────────────────────
-   A 5x3 grid. The center cell (col 3, row 2) is the "scaler" photo that
-   starts covering the viewport and shrinks into place while the ring of
-   tiles around it fades and scales in, staggered from the middle out.
-   Photos land on the strong inner cells; the rest are brand tiles. */
+   A 5x3 grid. The center cell (col 3, row 2) is the "scaler": a solid brand
+   color that starts covering the viewport and shrinks into place while the
+   ring of tiles around it fades and scales in, staggered from the middle out.
+   Every culture photo in /public lands on a tile; the rest are brand tiles.
+   The big center stays a color on purpose (a full-bleed low-res photo looks
+   rough). `photo` indexes into V2_HERO_PHOTOS. */
 type Cell = {
   col: number;
   row: number;
   ring: number; // 0 = adjacent to center, 1 = outer. Drives stagger.
-  photo?: { image: string; alt: string };
+  photo?: number;
   tone?: "lavender" | "gold" | "purple" | "soft";
   motif?: "sparkle" | "word" | "heart";
 };
 
 const CELLS: Cell[] = [
   // Row 1
-  { col: 1, row: 1, ring: 1, tone: "soft", motif: "sparkle" },
+  { col: 1, row: 1, ring: 1, photo: 0 }, // campusmoment
   { col: 2, row: 1, ring: 1, tone: "purple", motif: "word" },
-  { col: 3, row: 1, ring: 0, photo: V2_HERO.tiles[1] }, // campusmoments2
+  { col: 3, row: 1, ring: 0, photo: 2 }, // campusmoments2
   { col: 4, row: 1, ring: 1, tone: "gold", motif: "sparkle" },
-  { col: 5, row: 1, ring: 1, tone: "lavender", motif: "heart" },
+  { col: 5, row: 1, ring: 1, photo: 3 }, // campusmoments3
   // Row 2 (center row; col 3 is the scaler, rendered separately)
-  { col: 1, row: 2, ring: 1, tone: "gold", motif: "sparkle" },
-  { col: 2, row: 2, ring: 0, photo: V2_HERO.tiles[0] }, // kindnessnote
-  { col: 4, row: 2, ring: 0, photo: V2_HERO.tiles[2] }, // campusmoments3
+  { col: 1, row: 2, ring: 1, photo: 4 }, // campusmoments4
+  { col: 2, row: 2, ring: 0, photo: 1 }, // kindnessnote
+  { col: 4, row: 2, ring: 0, photo: 5 }, // campusmoments5
   { col: 5, row: 2, ring: 1, tone: "purple", motif: "word" },
   // Row 3
   { col: 1, row: 3, ring: 1, tone: "lavender", motif: "heart" },
-  { col: 2, row: 3, ring: 1, tone: "gold", motif: "sparkle" },
-  { col: 3, row: 3, ring: 0, tone: "soft", motif: "word" },
-  { col: 4, row: 3, ring: 1, tone: "purple", motif: "sparkle" },
+  { col: 2, row: 3, ring: 1, photo: 6 }, // campusmoments6
+  { col: 3, row: 3, ring: 0, photo: 8 }, // kindnessnote2
+  { col: 4, row: 3, ring: 1, photo: 7 }, // campusmoments7
   { col: 5, row: 3, ring: 1, tone: "soft", motif: "sparkle" },
 ];
 
@@ -58,7 +65,7 @@ const TONE_CLASS: Record<NonNullable<Cell["tone"]>, string> = {
 
 export function HeroScroll() {
   const sectionRef = useRef<HTMLElement>(null);
-  const scalerRef = useRef<HTMLAnchorElement>(null);
+  const scalerRef = useRef<HTMLDivElement>(null);
   const coverRef = useRef(4);
   const reduced = useReducedMotion();
   const { openInvolve } = useInvolve();
@@ -84,7 +91,7 @@ export function HeroScroll() {
     return () => window.removeEventListener("resize", compute);
   }, []);
 
-  // Center image: shrinks from covering the viewport down to its grid cell.
+  // Center color block: shrinks from covering the viewport down to its cell.
   const scalerScale = useTransform(scrollYProgress, (p) => {
     const t = Math.min(Math.max(p / 0.5, 0), 1);
     const e = 1 - Math.pow(1 - t, 3); // ease-out cubic
@@ -92,20 +99,18 @@ export function HeroScroll() {
   });
   const scalerRadius = useTransform(scrollYProgress, [0, 0.5], [0, 24]);
 
-  // Hero copy sits over the big image, then clears as the grid forms.
+  // Hero copy sits over the color, then clears as the grid forms.
   const heroOpacity = useTransform(scrollYProgress, [0.04, 0.28], [1, 0]);
   const heroY = useTransform(scrollYProgress, [0, 0.3], ["0%", "-6%"]);
   const heroBlur = useTransform(scrollYProgress, [0.04, 0.28], [0, 6]);
   const heroFilter = useTransform(heroBlur, (b) => `blur(${b}px)`);
 
-  // Dark overlay on the scaler that lifts as it shrinks (copy legibility).
-  const overlayOpacity = useTransform(scrollYProgress, [0.02, 0.4], [0.72, 0]);
+  // Texture on the center block fades as it shrinks into a small tile.
+  const textureOpacity = useTransform(scrollYProgress, [0.1, 0.45], [1, 0]);
 
   // Closing tagline fades in once the grid is assembled.
   const tagOpacity = useTransform(scrollYProgress, [0.55, 0.78], [0, 1]);
   const tagY = useTransform(scrollYProgress, [0.55, 0.78], [24, 0]);
-
-  const scaler = V2_HERO.scaler;
 
   return (
     <section
@@ -128,13 +133,10 @@ export function HeroScroll() {
             />
           ))}
 
-          {/* Center scaler (col 3, row 2) */}
-          <motion.a
+          {/* Center scaler (col 3, row 2) — a solid brand color, not a photo */}
+          <motion.div
             ref={scalerRef}
-            href={scaler.href}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Campus moment on Instagram"
+            aria-hidden
             style={
               reduced
                 ? { gridColumnStart: 3, gridRowStart: 2 }
@@ -146,25 +148,19 @@ export function HeroScroll() {
                     zIndex: 30,
                   }
             }
-            className="group relative z-30 block aspect-[4/5] w-full origin-center overflow-hidden rounded-2xl shadow-[0_30px_80px_-40px_rgba(26,18,36,0.8)]"
+            className="relative z-30 aspect-[4/5] w-full origin-center overflow-hidden rounded-2xl bg-gradient-to-b from-purple via-purple-deep to-ink shadow-[0_30px_80px_-40px_rgba(26,18,36,0.8)]"
           >
-            <Image
-              src={scaler.image}
-              alt={scaler.alt}
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
             <motion.div
-              aria-hidden
-              style={reduced ? { opacity: 0 } : { opacity: overlayOpacity }}
-              className="absolute inset-0 bg-gradient-to-b from-purple-deep/60 via-ink/50 to-ink/80"
-            />
-          </motion.a>
+              style={reduced ? undefined : { opacity: textureOpacity }}
+              className="absolute inset-0"
+            >
+              <div className="absolute inset-0 opacity-70 [background-image:radial-gradient(circle_at_75%_25%,rgba(201,184,232,0.35)_0%,transparent_45%),radial-gradient(circle_at_15%_80%,rgba(201,162,39,0.2)_0%,transparent_40%)]" />
+              <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:40px_40px]" />
+            </motion.div>
+          </motion.div>
         </div>
 
-        {/* Hero copy over the big image */}
+        {/* Hero copy over the color */}
         <motion.div
           style={
             reduced
@@ -264,15 +260,17 @@ function Tile({
     ? { gridColumnStart: cell.col, gridRowStart: cell.row }
     : { gridColumnStart: cell.col, gridRowStart: cell.row, opacity, scale };
 
+  const photo = cell.photo !== undefined ? V2_HERO_PHOTOS[cell.photo] : null;
+
   return (
     <motion.div
       style={style}
       className="relative aspect-[4/5] w-full origin-center overflow-hidden rounded-2xl"
     >
-      {cell.photo ? (
+      {photo ? (
         <Image
-          src={cell.photo.image}
-          alt={cell.photo.alt}
+          src={photo.image}
+          alt={photo.alt}
           fill
           sizes="20vw"
           className="object-cover"
