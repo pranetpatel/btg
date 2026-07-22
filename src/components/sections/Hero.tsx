@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/content";
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL, LOGO } from "@/lib/content";
 import { useInvolve } from "@/lib/involve-context";
 import { Sparkle } from "@/components/ui/Sparkle";
 
@@ -53,12 +53,12 @@ export function Hero() {
           className="flex items-center gap-4"
         >
           <Image
-            src="/logowhite.png"
-            alt="Be The Good — Western University"
-            width={128}
-            height={128}
+            src={LOGO}
+            alt="Be The Good, Western University"
+            width={144}
+            height={144}
             priority
-            className="h-20 w-20 object-contain md:h-28 md:w-28"
+            className="h-24 w-24 object-contain md:h-32 md:w-32"
           />
           <span className="eyebrow text-lavender">
             Student-led · Western University
@@ -94,11 +94,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.6 }}
-          className="max-w-lg text-base text-lavender md:text-lg"
+          className="max-w-lg font-serif text-xl italic text-lavender md:text-2xl"
         >
-          A student-led nonprofit at Western University — Be The Good Care for
-          caregiver burnout, community food &amp; hygiene kits, and mentorship
-          for incoming students.
+          Kindness that shows up.
         </motion.p>
 
         <motion.div

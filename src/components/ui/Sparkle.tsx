@@ -1,5 +1,5 @@
 /**
- * Four-point gold sparkle — a core brand motif (BRAND.md §5).
+ * Four-point gold sparkle - a core brand motif (BRAND.md §5).
  * Pure SVG so it inherits color via `text-*` / `fill-current`.
  */
 export function Sparkle({

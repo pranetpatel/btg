@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 type Tag = "h1" | "h2" | "h3" | "h4" | "p" | "div" | "span";
 
 /**
- * Word-by-word staggered reveal for editorial headlines — matches the
+ * Word-by-word staggered reveal for editorial headlines - matches the
  * Capsules "premium editorial" text-reveal feel. Each word rises and fades
  * in on a soft ease as the block scrolls into view.
  *

@@ -23,7 +23,7 @@ export function Why() {
           className="mt-6 max-w-3xl font-serif text-4xl font-medium leading-[1.02] tracking-tight md:text-6xl"
         />
 
-        {/* Sticky-stacked storytelling — each panel pins and stacks */}
+        {/* Sticky-stacked storytelling - each panel pins and stacks */}
         <div className="mt-20">
           {WHY_POINTS.map((point, i) => (
             <StickyPanel key={point.index} point={point} index={i} />
@@ -71,15 +71,12 @@ function StickyPanel({
           </div>
         </div>
         <div className={index % 2 === 1 ? "md:order-1" : ""}>
-          <span className="font-serif text-5xl font-medium text-gold/80 md:text-6xl">
+          <span className="font-serif text-6xl font-medium text-gold/80 md:text-7xl">
             {point.index}
           </span>
-          <h3 className="mt-4 font-serif text-2xl font-medium leading-tight tracking-tight md:text-3xl">
+          <h3 className="mt-4 font-serif text-3xl font-medium leading-tight tracking-tight md:text-5xl">
             {point.title}
           </h3>
-          <p className="mt-4 max-w-md leading-relaxed text-lavender">
-            {point.copy}
-          </p>
         </div>
       </motion.div>
     </div>

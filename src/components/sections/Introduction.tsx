@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { RevealText } from "@/components/ui/RevealText";
 import { MaskReveal } from "@/components/ui/MaskReveal";
@@ -6,7 +9,13 @@ import { Sparkle } from "@/components/ui/Sparkle";
 
 export function Introduction() {
   return (
-    <section id="about" className="bg-cream px-6 py-28 md:px-10 md:py-40">
+    <section
+      id="about"
+      className="relative overflow-hidden bg-cream px-6 py-28 md:px-10 md:py-40"
+    >
+      <Sparkle className="absolute right-[10%] top-[16%] h-6 w-6" twinkle />
+      <Sparkle className="absolute left-[6%] bottom-[20%] h-4 w-4" twinkle />
+
       <div className="mx-auto max-w-5xl">
         <Reveal>
           <p className="eyebrow flex items-center gap-2 text-purple/70">
@@ -16,34 +25,22 @@ export function Introduction() {
         </Reveal>
 
         <RevealText
-          as="p"
-          text={"We're Western students who believe\nkindness shouldn't stop at a caption."}
-          className="mt-6 max-w-4xl font-serif text-3xl font-medium leading-[1.08] tracking-tight text-ink md:text-5xl"
+          text={"We just do\nthe good."}
+          className="mt-6 font-serif text-5xl font-medium leading-[0.98] tracking-tight text-ink md:text-8xl"
         />
 
         <Reveal delay={0.1}>
-          <div className="mt-12 grid gap-8 md:grid-cols-2">
-            <p className="text-base leading-relaxed text-ink/75 md:text-lg">
-              Be The Good is a student-led nonprofit from Western University. We
-              turn everyday kindness into real support — for caregivers, for
-              people facing hardship in our community, and for students who need
-              someone in their corner.
-            </p>
-            <p className="text-base leading-relaxed text-ink/75 md:text-lg">
-              We&rsquo;re not a glossy charity brand. We&rsquo;re campus-rooted,
-              founder-led, and action-first: notes on windshields, kits for
-              people without housing, mentorship for incoming students, and an
-              app built to ease caregiver burnout.
-            </p>
-          </div>
+          <p className="mt-8 max-w-md text-lg text-ink/70">
+            Notes, kits, mentors, and an app for caregivers.
+          </p>
         </Reveal>
 
         {/* Dual image mask reveals */}
-        <div className="mt-16 grid gap-5 sm:grid-cols-5">
+        <div className="mt-14 grid gap-5 sm:grid-cols-5">
           <MaskReveal className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl sm:col-span-3">
             <ImageOrPlaceholder
               src={null}
-              alt="Students packing kindness kits on campus"
+              alt="Students on campus"
               label="Campus moment"
               className="h-full w-full"
             />
@@ -61,28 +58,26 @@ export function Introduction() {
           </MaskReveal>
         </div>
 
-        <Reveal delay={0.1}>
-          <div className="mt-14 max-w-2xl border-l-2 border-gold pl-6">
-            <p className="font-serif text-xl italic leading-snug text-ink md:text-2xl">
-              &ldquo;Impact can be small and still count — smiles, notes, kits,
-              mentors.&rdquo;
-            </p>
-            <p className="mt-3 text-sm text-ink/60">
-              Founded by Arpi, Health Sciences — determined to bring out the
-              best in herself and others.
-            </p>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.15}>
-          <a
-            href="#pillars"
-            className="mt-12 inline-flex items-center gap-3 rounded-full border border-ink px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-cream"
+        <div className="mt-12 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <motion.p
+            initial={{ opacity: 0, x: -16 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="border-l-2 border-gold pl-4 font-serif text-lg italic text-ink"
           >
-            See what we do
-            <span aria-hidden>→</span>
-          </a>
-        </Reveal>
+            Founded by Arpi, Health Sciences.
+          </motion.p>
+          <Reveal delay={0.1}>
+            <a
+              href="#pillars"
+              className="inline-flex items-center gap-3 rounded-full border border-ink px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-cream"
+            >
+              What we do
+              <span aria-hidden>→</span>
+            </a>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

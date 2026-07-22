@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 /**
- * Clip-path "mask" reveal — the content wipes in from bottom to top while a
+ * Clip-path "mask" reveal - the content wipes in from bottom to top while a
  * subtle scale settles, mirroring the Capsules image-reveal treatment.
  */
 export function MaskReveal({

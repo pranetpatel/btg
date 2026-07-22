@@ -27,19 +27,12 @@ export function Pillars() {
         </Reveal>
 
         <RevealText
-          text={"Three streams,\none movement."}
+          text={"Three ways\nwe show up."}
           className="mt-6 max-w-2xl font-serif text-4xl font-medium leading-[1.02] tracking-tight md:text-6xl"
         />
 
-        <Reveal delay={0.1}>
-          <p className="mt-6 max-w-xl text-lavender">
-            Student-led good, made practical — on campus and beyond. Each stream
-            turns kindness into something people can actually feel.
-          </p>
-        </Reveal>
-
         <Reveal delay={0.15}>
-          <ul className="mt-12 flex flex-wrap gap-3">
+          <ul className="mt-10 flex flex-wrap gap-3">
             {VALUES.map((value) => (
               <li
                 key={value}
@@ -72,16 +65,11 @@ export function Pillars() {
                   {pillar.status}
                 </span>
               </div>
-              <div className="flex flex-1 flex-col gap-3 p-6">
+              <div className="flex flex-1 flex-col gap-2 p-6">
                 <h3 className="font-serif text-2xl font-medium tracking-tight">
                   {pillar.name}
                 </h3>
-                <p className="text-sm font-medium text-gold">
-                  {pillar.tagline}
-                </p>
-                <p className="flex-1 text-sm text-lavender">
-                  {pillar.description}
-                </p>
+                <p className="flex-1 text-base text-gold">{pillar.blurb}</p>
                 <button
                   type="button"
                   onClick={() => setActive(pillar)}
@@ -125,7 +113,7 @@ export function Pillars() {
               <h3 className="mt-4 font-serif text-3xl font-medium tracking-tight md:text-4xl">
                 {active.name}
               </h3>
-              <p className="mt-2 font-medium text-gold">{active.tagline}</p>
+              <p className="mt-2 font-medium text-gold">{active.blurb}</p>
               <p className="mt-5 max-w-lg leading-relaxed text-ink/75">
                 {active.detail}
               </p>

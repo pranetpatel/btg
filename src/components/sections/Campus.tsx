@@ -23,16 +23,10 @@ export function Campus() {
             className="mt-6 font-serif text-4xl font-medium leading-[1.02] tracking-tight text-ink md:text-6xl"
           />
           <Reveal delay={0.12}>
-            <p className="mt-6 max-w-md leading-relaxed text-ink/75">
-              We&rsquo;re a student-led club with our feet on campus — kindness
-              drops between classes, kits packed with the crew, and mentors who
-              know the walk from the gates to Weldon. Western-rooted, but the
-              good travels into the London community.
-            </p>
-            <p className="mt-4 font-medium text-ink">
+            <p className="mt-8 font-serif text-2xl italic text-ink">
               Western University
               <br />
-              London, Ontario · Canada
+              London, Ontario
             </p>
           </Reveal>
           <Reveal delay={0.18}>

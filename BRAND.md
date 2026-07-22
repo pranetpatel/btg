@@ -255,4 +255,27 @@ Each mockup should include at minimum:
 
 ---
 
-*Drafted for website design exploration. App name confirmed: Be The Good Care. Update when donation path and food bank partner are confirmed.*
+## 12. Website copy & build rules (v2 — locked in from build feedback)
+
+These override the longer sample copy above wherever they conflict. The public site is **image-led and CTA-led**, not text-heavy.
+
+### Copy
+- **Few words.** Each section is a headline plus, at most, one short supporting line. Cut paragraphs. Let photos carry the story once they land.
+- **CTA-first.** Every section should push toward an action: Get involved, Sponsor, Become a mentor, Follow, Learn more.
+- **Short headlines** (one to two lines). Prefer punchy fragments: "We just do the good.", "Ways to help.", "Straight from campus."
+- **No em-dashes or en-dashes anywhere** (— or –). Use a period, comma, or "and". This is a hard rule for all site copy and metadata.
+- **No AI / marketing filler.** Ban phrases like: "turn everyday kindness into real support", "made practical", "student-led good", "premium editorial", "showing up where it's needed most", balanced tricolons ("X, Y, and Z that…"), and any sentence that sounds like a brand deck. Write like a student texting a friend.
+- Keep the approved taglines from §11 (Be the good. / Join the movement. / Even a few smiles count. / Kindness that shows up.).
+
+### Logo
+- **Use `/logowhite-removebg.png` (transparent) everywhere** — nav, hero, menu, closing, footer. It reads on light and dark backgrounds with no white/black box around it.
+- `logowhite.png` (white box) and `logoblack.png` (dark box) are backups only. Do not place them on colored backgrounds.
+
+### Motion
+- Keep the card interactions and section reveals (pillar cards, sticky "Why" stack, marquees, mask-reveal images, word-staggered headlines).
+- The **first sections** (hero + intro) should be animated too: logo entrance, floating gold sparkles, a "Be the good" marquee strip, and mask-reveal image slots.
+- Placeholders stay clearly labeled until real photos land in `/public`; the site is built to look much stronger once images are dropped in.
+
+---
+
+*Drafted for website design exploration. App name confirmed: Be The Good Care. §12 added from build feedback: fewer words, CTA-led, transparent logo, no em-dashes, no AI filler. Update when donation path and food bank partner are confirmed.*

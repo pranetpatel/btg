@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { INSTAGRAM_HANDLE, INSTAGRAM_URL, NAV_LINKS } from "@/lib/content";
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL, LOGO, NAV_LINKS } from "@/lib/content";
 
 export function Footer() {
   return (
@@ -9,19 +9,18 @@ export function Footer() {
           <div className="max-w-sm">
             <div className="flex items-center gap-3">
               <Image
-                src="/logoblack.png"
+                src={LOGO}
                 alt="Be The Good"
-                width={48}
-                height={48}
-                className="h-11 w-11 object-contain"
+                width={52}
+                height={52}
+                className="h-12 w-12 object-contain"
               />
               <p className="font-serif text-2xl font-medium tracking-tight md:text-3xl">
                 Be The Good
               </p>
             </div>
-            <p className="mt-4 text-ink/70">
-              Student-led good, made practical — on campus and beyond. A
-              nonprofit from Western University.
+            <p className="mt-4 font-serif text-lg italic text-ink/70">
+              Be the good.
             </p>
             <a
               href={INSTAGRAM_URL}

@@ -1,7 +1,7 @@
 import { Sparkle } from "./Sparkle";
 
 /**
- * Repeating "BE THE GOOD ✦" marquee — the brand's ticker-border motif
+ * Repeating "BE THE GOOD ✦" marquee - the brand's ticker-border motif
  * (BRAND.md §5). Duplicated inline so the loop is seamless.
  */
 export function BrandTicker({

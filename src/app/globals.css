@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Be The Good — Western collegiate palette (see BRAND.md §5) */
+  /* Be The Good - Western collegiate palette (see BRAND.md §5) */
   --color-cream: #f7f3ec;
   --color-lavender: #c9b8e8;
   --color-lavender-soft: #ede6f7;

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { RevealText } from "@/components/ui/RevealText";
 import { BrandTicker } from "@/components/ui/BrandTicker";
-import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/content";
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL, LOGO } from "@/lib/content";
 import { useInvolve } from "@/lib/involve-context";
 
 export function ClosingCta() {
@@ -24,11 +24,11 @@ export function ClosingCta() {
               className="mx-auto mb-8 w-fit"
             >
               <Image
-                src="/logoblack.png"
+                src={LOGO}
                 alt="Be The Good"
-                width={96}
-                height={96}
-                className="h-20 w-20 object-contain md:h-24 md:w-24"
+                width={112}
+                height={112}
+                className="h-24 w-24 object-contain md:h-28 md:w-28"
               />
             </motion.div>
           </Reveal>
@@ -39,10 +39,8 @@ export function ClosingCta() {
           />
 
           <Reveal delay={0.1}>
-            <p className="mx-auto mt-8 max-w-lg leading-relaxed text-ink/70">
-              Your time and sponsorship put food and hygiene kits into
-              circulation, fuel campus kindness projects, and help student-led
-              programs grow beyond what a small team can build alone.
+            <p className="mx-auto mt-6 max-w-sm font-serif text-xl italic text-ink/70">
+              Even a few smiles count.
             </p>
           </Reveal>
 

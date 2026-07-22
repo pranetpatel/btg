@@ -28,19 +28,13 @@ export function Involved() {
           </p>
         </Reveal>
         <RevealText
-          text={"Ways to be\nthe good."}
+          text={"Ways to help."}
           className="mt-6 max-w-2xl font-serif text-4xl font-medium leading-[1.02] tracking-tight md:text-6xl"
         />
-        <Reveal delay={0.1}>
-          <p className="mt-6 max-w-xl text-lavender">
-            Come once or come often. Whether you have an afternoon, a school
-            year, or a company behind you — there&rsquo;s a way in.
-          </p>
-        </Reveal>
 
         {/* Chip legend */}
-        <Reveal delay={0.15}>
-          <div className="mt-10 flex flex-wrap gap-3 text-sm">
+        <Reveal delay={0.1}>
+          <div className="mt-8 flex flex-wrap gap-3 text-sm">
             {(["Drop-in", "Ongoing", "Coming soon", "Partner"] as const).map(
               (tag) => (
                 <span
@@ -76,10 +70,9 @@ export function Involved() {
                   {way.meta}
                 </span>
               </div>
-              <h3 className="font-serif text-2xl font-medium tracking-tight">
+              <h3 className="mt-2 font-serif text-3xl font-medium tracking-tight">
                 {way.title}
               </h3>
-              <p className="text-sm text-lavender">{way.copy}</p>
               <span className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-cream">
                 Count me in
                 <span
@@ -94,18 +87,15 @@ export function Involved() {
         </div>
 
         <Reveal delay={0.1}>
-          <p className="mt-12 text-sm text-lavender">
-            Prefer socials? DM us{" "}
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium text-cream underline underline-offset-4 hover:opacity-80"
-            >
-              {INSTAGRAM_HANDLE}
-            </a>{" "}
-            — even a few smiles count.
-          </p>
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-12 inline-flex items-center gap-2 text-sm font-medium text-cream underline underline-offset-4 transition-opacity hover:opacity-80"
+          >
+            <Sparkle className="h-4 w-4" />
+            Or just DM us {INSTAGRAM_HANDLE}
+          </a>
         </Reveal>
       </div>
     </section>

@@ -41,16 +41,9 @@ export function Stories() {
           </p>
         </Reveal>
         <RevealText
-          text={"Small kindness,\nout loud."}
+          text={"Straight from\ncampus."}
           className="mt-6 max-w-2xl font-serif text-4xl font-medium leading-[1.02] tracking-tight md:text-6xl"
         />
-        <Reveal delay={0.1}>
-          <p className="mt-6 max-w-xl text-lavender">
-            Real moments from our windshields, our street interviews, and our
-            crews. Photo-led stories drop in here as we document the work —
-            placeholders below are clearly marked.
-          </p>
-        </Reveal>
       </div>
 
       <div className="mt-16 overflow-hidden">

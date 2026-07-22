@@ -8,6 +8,7 @@ import { Why } from "@/components/sections/Why";
 import { Involved } from "@/components/sections/Involved";
 import { Stories } from "@/components/sections/Stories";
 import { ClosingCta } from "@/components/sections/ClosingCta";
+import { BrandTicker } from "@/components/ui/BrandTicker";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <BrandTicker className="bg-purple py-5 text-cream" />
         <Introduction />
         <Pillars />
         <Campus />

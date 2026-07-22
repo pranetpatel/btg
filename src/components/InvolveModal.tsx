@@ -103,9 +103,7 @@ function InvolveFlow({
                   Be the good with us.
                 </h3>
                 <p className="mt-3 text-sm text-ink/70">
-                  Pick the way you&rsquo;d like to show up. This is a concept
-                  build — it won&rsquo;t send anywhere yet, but a live version
-                  would reach the team.
+                  Pick a way in. This is a concept build, so nothing sends yet.
                 </p>
 
                 <div className="mt-8 flex flex-col gap-3">
@@ -146,7 +144,7 @@ function InvolveFlow({
                   {PATH_LABEL[purpose]}
                 </h3>
                 <p className="mt-3 text-sm text-ink/70">
-                  Leave your details and a note. We&rsquo;ll take it from here.
+                  Leave your details. We&rsquo;ll take it from here.
                 </p>
 
                 <div className="mt-8 flex flex-col gap-4">
@@ -169,7 +167,7 @@ function InvolveFlow({
                   <Field label="Anything you'd like to add?">
                     <textarea
                       rows={3}
-                      placeholder="Optional — tell us how you'd like to help."
+                      placeholder="Optional note"
                       className="w-full resize-none rounded-2xl border border-purple/15 bg-white/60 px-5 py-3.5 text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-purple"
                     />
                   </Field>
@@ -197,11 +195,11 @@ function InvolveFlow({
               <div className="mt-6 flex flex-col items-center py-6 text-center">
                 <span className="text-4xl text-gold">✦</span>
                 <h3 className="mt-4 font-serif text-3xl font-medium tracking-tight md:text-4xl">
-                  Thank you for being the good.
+                  Thanks for being the good.
                 </h3>
                 <p className="mt-3 max-w-sm text-sm text-ink/70">
-                  This concept build doesn&rsquo;t send messages yet — but in the
-                  meantime, the fastest way to reach us is a DM.
+                  Nothing sends in this concept build. The fastest way to reach
+                  us is a DM.
                 </p>
                 <a
                   href={INSTAGRAM_URL}

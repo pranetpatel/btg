@@ -26,9 +26,9 @@ const script = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: "Be The Good — Kindness that shows up | Western University",
+  title: "Be The Good | Kindness that shows up, Western University",
   description:
-    "Be The Good is a student-led nonprofit at Western University. We turn everyday kindness into real support — Be The Good Care for caregiver burnout, community food & hygiene kits, and mentorship for incoming students.",
+    "A student-led nonprofit at Western University. Be The Good Care for caregiver burnout, community food and hygiene kits, and mentorship for new students.",
 };
 
 export default function RootLayout({

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { INSTAGRAM_HANDLE, INSTAGRAM_URL, NAV_LINKS } from "@/lib/content";
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL, LOGO, NAV_LINKS } from "@/lib/content";
 import { useInvolve } from "@/lib/involve-context";
 import { Sparkle } from "@/components/ui/Sparkle";
 
@@ -16,11 +16,11 @@ export function Header() {
       <header className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-4 text-cream mix-blend-difference md:px-10 md:py-5">
         <a href="#home" className="flex items-center gap-3">
           <Image
-            src="/logowhite.png"
+            src={LOGO}
             alt="Be The Good"
-            width={44}
-            height={44}
-            className="h-10 w-10 object-contain md:h-11 md:w-11"
+            width={48}
+            height={48}
+            className="h-11 w-11 object-contain md:h-12 md:w-12"
             priority
           />
           <span className="font-serif text-lg font-medium tracking-tight">
@@ -65,11 +65,11 @@ export function Header() {
             <div className="flex items-center justify-between px-6 py-4 md:px-10 md:py-5">
               <span className="flex items-center gap-3">
                 <Image
-                  src="/logowhite.png"
+                  src={LOGO}
                   alt="Be The Good"
-                  width={44}
-                  height={44}
-                  className="h-10 w-10 object-contain"
+                  width={48}
+                  height={48}
+                  className="h-11 w-11 object-contain"
                 />
                 <span className="font-serif text-lg font-medium tracking-tight">
                   Be The Good
