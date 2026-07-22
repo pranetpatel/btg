@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL, LOGO, NAV_LINKS } from "@/lib/content";
 import { useInvolve } from "@/lib/involve-context";
 import { Sparkle } from "@/components/ui/Sparkle";
+import { VersionSwitch } from "@/components/ui/VersionSwitch";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -29,6 +30,7 @@ export function Header() {
         </a>
 
         <div className="flex items-center gap-4 md:gap-6">
+          <VersionSwitch current="A" />
           <button
             type="button"
             onClick={() => openInvolve("sponsor")}

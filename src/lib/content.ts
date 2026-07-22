@@ -49,6 +49,27 @@ export const CAMPUS_MOMENTS = {
   },
 } as const;
 
+/**
+ * Version B (Campus Warmth) photo assignments. Each file is used once on
+ * /v2. The scroll-grid hero takes the "moment" culture photos; pillars,
+ * campus, and why keep their portrait/note slots (see PILLARS / CAMPUS_MOMENTS
+ * / KINDNESS_NOTE_2 below). Keep in sync with BRAND.md §13.
+ */
+export const V2_HERO = {
+  /** Big center image that shrinks into the grid as you scroll. */
+  scaler: {
+    image: "/campusmoment.png",
+    href: "https://www.instagram.com/p/DZksVMoAMNU/",
+    alt: "Campus street interview with a passerby",
+  },
+  /** Real culture photos scattered through the reveal grid. */
+  tiles: [
+    { image: "/kindnessnote.png", alt: "Handwritten kindness note taped to wood" },
+    { image: "/campusmoments2.png", alt: "Handing a kindness note in the mall" },
+    { image: "/campusmoments3.png", alt: "Campus interview in the library lounge" },
+  ],
+} as const;
+
 export const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "Who we are", href: "#about" },

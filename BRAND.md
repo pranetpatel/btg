@@ -305,6 +305,40 @@ These override the longer sample copy above wherever they conflict. The public s
 
 **Rule:** Each photo file is used in **one** slot on the homepage. `kindnessnote.png` and `kindnessnote2.png` are different notes. Never reuse either.
 
+### Version B (`/v2` — Campus Warmth) photo map
+
+Version B is a second design direction (route `/v2`). The **same no-reuse rule** applies: each file is used in **one** slot on `/v2`. The scroll-grid hero pulls the "moment" culture photos to the top; portraits and the second note keep their sections. Assignments differ from the homepage (`/`) as noted.
+
+| File | Slot on `/v2` | Differs from `/`? |
+| --- | --- | --- |
+| `campusmoment.png` | **Hero** scroll-grid center (the image that shrinks into the grid). Linked to IG | Yes — was About intro on `/` |
+| `kindnessnote.png` | **Hero** scroll-grid tile | Yes — was About intro on `/` |
+| `campusmoments2.png` | **Hero** scroll-grid tile | Yes — was Why · 01 on `/` |
+| `campusmoments3.png` | **Hero** scroll-grid tile | Yes — was Why · 02 on `/` |
+| `campusmoments6.jpeg` | **Pillar · Be The Good Care** | Same |
+| `campusmoments5.jpeg` | **Pillar · Community care** | Same |
+| `campusmoments7.jpeg` | **Pillar · Mentorship** | Same |
+| `campusmoments4.jpeg` | **Campus** section portrait | Same |
+| `kindnessnote2.png` | **Why** featured note | Same (Why · 03 on `/`) |
+
+### Version C (`/v3` — Action Impact) photo map
+
+Version C is the third design direction (route `/v3`): a scroll-driven 3D cube gallery. Nine scroll beats each rotate a photo onto the front of the cube. The cube has six physical faces, so faces are recycled as you scroll, but the image is swapped so **every beat still shows its own unique file**. The **same no-reuse rule** applies: each file appears in **one** slot on `/v3`. Chrome is dark-immersive by default with a light-mode toggle; faces keep the same photo in both themes.
+
+| File | Slot on `/v3` (scroll beat) | Differs from `/`? |
+| --- | --- | --- |
+| `campusmoment.png` | **s0 · Hero** cube face. Linked to IG | Yes — was About intro on `/` |
+| `kindnessnote.png` | **s1 · Who we are** cube face. Linked to IG | Yes — was About intro on `/` |
+| `campusmoments6.jpeg` | **s2 · Be The Good Care** cube face | Same |
+| `campusmoments5.jpeg` | **s3 · Community care** cube face | Same |
+| `campusmoments7.jpeg` | **s4 · Mentorship** cube face | Same |
+| `campusmoments4.jpeg` | **s5 · Campus** cube face | Same |
+| `campusmoments3.png` | **s6 · Why** cube face | Yes — was Why · 02 on `/` |
+| `campusmoments2.png` | **s7 · Get involved / Sponsor** cube face | Yes — was Why · 01 on `/` |
+| `kindnessnote2.png` | **s8 · Closing** cube face | Same (Why · 03 on `/`) |
+
+The rest of the hero grid uses **decorative brand tiles** (lavender / gold / purple panels with sparkles, hearts, and a "be the good" script) — these are brand texture, not photo slots, so they do not consume the media inventory. Real product shots still surface as labeled `ImageOrPlaceholder` tiles in the pillar cards until assets land. Hero photo assignments live in `src/lib/content.ts` under `V2_HERO`.
+
 Instagram CDN thumbnails are not reliably fetchable without login. Prefer these local exports as thumbnails; keep the IG URLs as the click-through.
 
 ### Icons (in code)
