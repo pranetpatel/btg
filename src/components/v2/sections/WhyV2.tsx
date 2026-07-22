@@ -1,15 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { WHY_POINTS } from "@/lib/content";
+import { KINDNESS_NOTE_2, WHY_POINTS } from "@/lib/content";
 import { Reveal } from "@/components/ui/Reveal";
 import { RevealText } from "@/components/ui/RevealText";
 import { ImageOrPlaceholder } from "@/components/ui/ImageOrPlaceholder";
 import { Sparkle } from "@/components/ui/Sparkle";
 
 /**
- * Version B "why": a featured note slot beside a numbered list. Photos live
- * only in the hero grid on /v2, so this uses the constant placeholder.
+ * Version B "why": featured kindness note beside a numbered list.
+ * Reuses kindnessnote2 (also in the hero grid) — fine for now.
  */
 export function WhyV2() {
   return (
@@ -18,8 +18,8 @@ export function WhyV2() {
         <Reveal>
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem]">
             <ImageOrPlaceholder
-              src={null}
-              alt="Kindness note"
+              src={KINDNESS_NOTE_2}
+              alt="Handwritten kindness note taped on campus"
               label="Kindness note"
               className="h-full w-full"
             />

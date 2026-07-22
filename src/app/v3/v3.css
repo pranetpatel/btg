@@ -160,7 +160,8 @@ html:has(.bg-gallery) {
 /* ── UI chrome ──────────────────────────────────────────────────────── */
 .bg-gallery #hud {
   position: fixed;
-  top: var(--ui-inset);
+  /* Sit below the A/B/C switch so the two never overlap or steal clicks */
+  top: calc(var(--ui-inset) + 3.75rem);
   right: var(--ui-inset);
   z-index: var(--z-ui);
   text-align: right;
@@ -168,6 +169,7 @@ html:has(.bg-gallery) {
   letter-spacing: 0.15em;
   color: var(--muted);
   text-transform: uppercase;
+  pointer-events: none;
 }
 
 .bg-gallery #hud .progress-bar {
@@ -333,10 +335,11 @@ html:has(.bg-gallery) {
   top: var(--ui-inset);
   right: var(--ui-inset);
   left: auto;
-  z-index: var(--z-ui);
+  z-index: calc(var(--z-ui) + 10);
   display: flex;
   align-items: center;
-  color: var(--fg);
+  pointer-events: auto;
+  isolation: isolate;
 }
 
 /* ── Cards ──────────────────────────────────────────────────────────── */
@@ -644,7 +647,7 @@ html:has(.bg-gallery) {
 /* ── Responsive ─────────────────────────────────────────────────────── */
 @media (width <= 56.25em) {
   .bg-gallery #hud {
-    top: 1rem;
+    top: calc(1rem + 3.5rem);
     right: 1rem;
   }
 

@@ -104,7 +104,8 @@ export const PILLARS: Pillar[] = [
     slug: "care",
     name: "Be The Good Care",
     blurb: "An app for caregiver burnout.",
-    image: CAMPUS_MOMENTS.concretePortrait.image,
+    /* Placeholder until Care UI / kit photos land. Keep null on A + B. */
+    image: null,
     status: "Live",
     detail:
       "A tool built with a friend to ease burnout for caregivers in clinical settings. Demo and screenshots land here soon.",
@@ -120,7 +121,7 @@ export const PILLARS: Pillar[] = [
     slug: "community",
     name: "Community care",
     blurb: "Food and hygiene kits.",
-    image: CAMPUS_MOMENTS.outdoorPortrait.image,
+    image: null,
     status: "Active",
     detail:
       "We raise money and build kits for people facing hardship across London, then get them into the right hands.",
@@ -136,7 +137,7 @@ export const PILLARS: Pillar[] = [
     slug: "mentorship",
     name: "Mentorship",
     blurb: "Peer support for new students.",
-    image: CAMPUS_MOMENTS.atriumPortrait.image,
+    image: null,
     status: "Ongoing",
     detail:
       "Mentors who walk alongside incoming students. Belonging and guidance, from people who have been there.",
