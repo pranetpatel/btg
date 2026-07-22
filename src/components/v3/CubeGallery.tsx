@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
 import { useInvolve } from "@/lib/involve-context";
 import {
   CAMPUS_MOMENT,
@@ -13,6 +12,7 @@ import {
   LOGO,
   PILLARS,
 } from "@/lib/content";
+import { VersionSwitch } from "@/components/ui/VersionSwitch";
 
 /* ── Photo map for Version C (each file used once — see BRAND.md §13) ──
    Order matches the nine scroll sections s0..s8. The cube has six physical
@@ -418,22 +418,9 @@ export function CubeGallery() {
         </div>
       </div>
 
-      {/* Brand mark + version switcher */}
+      {/* Version switcher only — matches A / B */}
       <div id="brandbar">
-        <a className="brand-logo" href="#s0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={LOGO} alt="Be The Good" />
-          <span className="brand-word">BE THE GOOD</span>
-        </a>
-        <nav className="vswitch" aria-label="Site versions">
-          <Link href="/">A</Link>
-          <span>/</span>
-          <Link href="/v2">B</Link>
-          <span>/</span>
-          <Link href="/v3" className="active" aria-current="page">
-            C
-          </Link>
-        </nav>
+        <VersionSwitch current="C" />
       </div>
 
       {/* HUD */}

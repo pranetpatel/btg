@@ -32,8 +32,9 @@ html:has(.bg-gallery) {
   --muted: var(--dark-muted);
   --accent: var(--accent-dark);
 
-  --font-display: var(--font-bebas), "Bebas Neue", sans-serif;
-  --font-mono: var(--font-dmmono), "DM Mono", ui-monospace, monospace;
+  /* Shared with Versions A / B (root layout: Fraunces + DM Sans) */
+  --font-display: var(--font-serif);
+  --font-mono: var(--font-sans);
   --hairline: 0.0625rem;
   --ui-inset: 2rem;
   --card-bg: rgba(23, 16, 42, 0.82);
@@ -47,7 +48,7 @@ html:has(.bg-gallery) {
   min-height: 100vh;
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   overflow-x: hidden;
   color-scheme: dark;
   transition: background 0.3s ease, color 0.3s ease;
@@ -326,66 +327,16 @@ html:has(.bg-gallery) {
   height: 0.8rem;
 }
 
-/* ── Brand mark + version switcher (top-left cluster) ───────────────── */
+/* ── Version switcher (top-right — matches A / B) ───────────────────── */
 .bg-gallery #brandbar {
   position: fixed;
   top: var(--ui-inset);
-  left: var(--ui-inset);
+  right: var(--ui-inset);
+  left: auto;
   z-index: var(--z-ui);
   display: flex;
   align-items: center;
-  gap: 0.9rem;
-}
-
-.bg-gallery #brandbar .brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  text-decoration: none;
   color: var(--fg);
-}
-
-.bg-gallery #brandbar .brand-logo img {
-  width: 2rem;
-  height: 2rem;
-  object-fit: contain;
-}
-
-.bg-gallery #brandbar .brand-word {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  letter-spacing: 0.09em;
-  color: var(--fg);
-}
-
-.bg-gallery .vswitch {
-  display: flex;
-  align-items: center;
-  gap: 0.15rem;
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.bg-gallery .vswitch a {
-  color: var(--muted);
-  text-decoration: none;
-  padding: 0.15rem 0.4rem;
-  border: var(--hairline) solid transparent;
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.bg-gallery .vswitch a:hover {
-  color: var(--fg);
-}
-
-.bg-gallery .vswitch a.active {
-  color: var(--accent);
-  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
-}
-
-.bg-gallery .vswitch span {
-  color: color-mix(in srgb, var(--muted) 55%, transparent);
 }
 
 /* ── Cards ──────────────────────────────────────────────────────────── */
@@ -448,9 +399,10 @@ html:has(.bg-gallery) {
 
 .bg-gallery :where(h1, h2) {
   font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  line-height: 0.9;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  text-transform: none;
 }
 
 .bg-gallery h1 {
@@ -706,12 +658,8 @@ html:has(.bg-gallery) {
 
   .bg-gallery #brandbar {
     top: 1rem;
-    left: 1.25rem;
-    gap: 0.6rem;
-  }
-
-  .bg-gallery #brandbar .brand-word {
-    display: none;
+    right: 1.25rem;
+    left: auto;
   }
 
   .bg-gallery #theme_toggle {
