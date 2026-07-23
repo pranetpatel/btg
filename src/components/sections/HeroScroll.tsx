@@ -13,7 +13,7 @@ import {
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
   LOGO,
-  V2_HERO_PHOTOS,
+  HERO_PHOTOS,
 } from "@/lib/content";
 import { useInvolve } from "@/lib/involve-context";
 import { Sparkle } from "@/components/ui/Sparkle";
@@ -26,7 +26,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
    ring of tiles around it fades and scales in, staggered from the middle out.
    Every culture photo in /public lands on a tile; the rest are brand tiles.
    The big center stays a color on purpose (a full-bleed low-res photo looks
-   rough). `photo` indexes into V2_HERO_PHOTOS. */
+   rough). `photo` indexes into HERO_PHOTOS. */
 type Cell = {
   col: number;
   row: number;
@@ -260,7 +260,7 @@ function Tile({
     ? { gridColumnStart: cell.col, gridRowStart: cell.row }
     : { gridColumnStart: cell.col, gridRowStart: cell.row, opacity, scale };
 
-  const photo = cell.photo !== undefined ? V2_HERO_PHOTOS[cell.photo] : null;
+  const photo = cell.photo !== undefined ? HERO_PHOTOS[cell.photo] : null;
 
   return (
     <motion.div

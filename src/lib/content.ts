@@ -50,15 +50,14 @@ export const CAMPUS_MOMENTS = {
 } as const;
 
 /**
- * Version B (Campus Warmth) hero grid. The scroll-grid hero is the ONLY place
- * real photos appear on /v2 — every culture photo in /public (logos excluded)
+ * Homepage scroll hero grid. Every culture photo in /public (logos excluded)
  * is scattered through the reveal grid at small size, so the current low-res
  * exports read fine. The center that scales up to fill the screen is a solid
- * brand color, not a photo (a full-bleed low-res image looks rough). Every
- * other /v2 section uses the shared ImageOrPlaceholder. Keep in sync with
+ * brand color, not a photo (a full-bleed low-res image looks rough). Body
+ * sections may reuse these files at their own slots. Keep in sync with
  * BRAND.md §13.
  */
-export const V2_HERO_PHOTOS = [
+export const HERO_PHOTOS = [
   { image: "/campusmoment.png", alt: "Campus street interview with a passerby" },
   { image: "/kindnessnote.png", alt: "Handwritten kindness note taped to wood" },
   { image: "/campusmoments2.png", alt: "Handing a kindness note in the mall" },

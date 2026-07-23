@@ -290,56 +290,25 @@ These override the longer sample copy above wherever they conflict. The public s
 | `logowhite.png` | Backup only (white box). Avoid on colored backgrounds |
 | `logoblack.png` | Backup only (dark box). Avoid on colored backgrounds |
 
-### Culture / campus photos (do not reuse the same file twice on one page)
-| File | Role on site | Notes |
-| --- | --- | --- |
-| `kindnessnote.png` | **Kindness moment** (About intro, right). Linked to IG | [IG post](https://www.instagram.com/p/DZP8_7YFo56/) |
-| `campusmoment.png` | **Campus moment** (About intro, left). Linked to IG | [IG post](https://www.instagram.com/p/DZksVMoAMNU/) |
-| `kindnessnote2.png` | **Why · 03 Make someone's week** | Second note. Do not reuse |
-| `campusmoments2.png` | **Why · 01 Show up. Give time.** | Note hand-off |
-| `campusmoments3.png` | **Why · 02 Find your people.** | Library / lounge interview |
-| `campusmoments4.jpeg` | **Campus** section hero | USC / Western portrait |
-| `campusmoments5.jpeg` | **Pillar · Community care** | Outdoor campus portrait |
-| `campusmoments6.jpeg` | **Pillar · Be The Good Care** | Concrete-wall portrait |
-| `campusmoments7.jpeg` | **Pillar · Mentorship** | Atrium portrait |
+### Culture / campus photos
 
-**Rule:** Each photo file is used in **one** slot on the homepage. `kindnessnote.png` and `kindnessnote2.png` are different notes. Never reuse either.
+The site is a **single page** (the earlier A/B/C exploration routes were removed). The scroll hero (B's grid) surfaces **all nine** culture photos as small tiles; several then appear at a larger slot in a body section. Reuse between the hero grid and a body section is **intentional** here — the hero is a small-tile montage, the body slot is the "real" placement. The center of the hero that scales up to fill the screen is a **solid purple gradient, not a photo** (a full-bleed low-res image looks rough).
 
-### Version B (`/v2` — Campus Warmth) photo map
+| File | Hero grid tile | Body slot | Notes |
+| --- | --- | --- | --- |
+| `campusmoment.png` | col 1, row 1 | **Who we are**, left. Linked to IG | [IG post](https://www.instagram.com/p/DZksVMoAMNU/) |
+| `kindnessnote.png` | col 2, row 2 | **Who we are**, right. Linked to IG | [IG post](https://www.instagram.com/p/DZP8_7YFo56/) |
+| `campusmoments2.png` | col 3, row 1 | **Ways to show up · 01** Show up. Give time. | Note hand-off |
+| `campusmoments3.png` | col 5, row 1 | **Ways to show up · 02** Find your people. | Library / lounge interview |
+| `kindnessnote2.png` | col 3, row 3 | **Ways to show up · 03** Make someone's week. | Second note (distinct from `kindnessnote.png`) |
+| `campusmoments4.jpeg` | col 1, row 2 | **Campus** section | USC / Western portrait |
+| `campusmoments5.jpeg` | col 4, row 2 | hero grid only | Outdoor campus portrait |
+| `campusmoments6.jpeg` | col 2, row 3 | hero grid only | Concrete-wall portrait |
+| `campusmoments7.jpeg` | col 4, row 3 | hero grid only | Atrium portrait |
 
-Version B is a second design direction (route `/v2`). On `/v2` the **scroll-grid hero is the only place real photos appear** — every culture photo in `/public` (logos excluded, all nine) is a small tile in the reveal grid, where the current low-res exports still read fine. The big center that scales up to fill the screen is a **solid brand color, not a photo** (a full-bleed low-res image looks rough). Every other section (**pillars, campus, why**) uses the shared `ImageOrPlaceholder`, kept **constant across the whole page** until stronger assets land. Because all photos are consumed by the hero, no file repeats elsewhere on `/v2`.
+Remaining hero-grid cells use **decorative brand tiles** (lavender / gold / purple panels with sparkles, hearts, and a "be the good" script) — brand texture, not photo slots. The hero photo list lives in `src/lib/content.ts` under `HERO_PHOTOS`. The **Get involved** cards and product/pillar shots stay as the shared `ImageOrPlaceholder` (labeled) until stronger assets land. `kindnessnote.png` and `kindnessnote2.png` are different notes — never swap them.
 
-| File | Slot on `/v2` |
-| --- | --- |
-| `campusmoment.png` | Hero grid tile (col 1, row 1) |
-| `kindnessnote.png` | Hero grid tile (col 2, row 2) |
-| `campusmoments2.png` | Hero grid tile (col 3, row 1) |
-| `campusmoments3.png` | Hero grid tile (col 5, row 1) |
-| `campusmoments4.jpeg` | Hero grid tile (col 1, row 2) |
-| `campusmoments5.jpeg` | Hero grid tile (col 4, row 2) |
-| `campusmoments6.jpeg` | Hero grid tile (col 2, row 3) |
-| `campusmoments7.jpeg` | Hero grid tile (col 4, row 3) |
-| `kindnessnote2.png` | Hero grid tile (col 3, row 3) |
-| _(none)_ | **Center scaler** = solid purple gradient block |
-| _(none)_ | **Pillars / Campus / Why** = constant `ImageOrPlaceholder` |
-
-### Version C (`/v3` — Action Impact) photo map
-
-Version C is the third design direction (route `/v3`): a scroll-driven 3D cube gallery. Nine scroll beats each rotate a photo onto the front of the cube. The cube has six physical faces, so faces are recycled as you scroll, but the image is swapped so **every beat still shows its own unique file**. The **same no-reuse rule** applies: each file appears in **one** slot on `/v3`. Chrome is dark-immersive by default with a light-mode toggle; faces keep the same photo in both themes.
-
-| File | Slot on `/v3` (scroll beat) | Differs from `/`? |
-| --- | --- | --- |
-| `campusmoment.png` | **s0 · Hero** cube face. Linked to IG | Yes — was About intro on `/` |
-| `kindnessnote.png` | **s1 · Who we are** cube face. Linked to IG | Yes — was About intro on `/` |
-| `campusmoments6.jpeg` | **s2 · Be The Good Care** cube face | Same |
-| `campusmoments5.jpeg` | **s3 · Community care** cube face | Same |
-| `campusmoments7.jpeg` | **s4 · Mentorship** cube face | Same |
-| `campusmoments4.jpeg` | **s5 · Campus** cube face | Same |
-| `campusmoments3.png` | **s6 · Why** cube face | Yes — was Why · 02 on `/` |
-| `campusmoments2.png` | **s7 · Get involved / Sponsor** cube face | Yes — was Why · 01 on `/` |
-| `kindnessnote2.png` | **s8 · Closing** cube face | Same (Why · 03 on `/`) |
-
-On `/v2` the remaining hero-grid cells use **decorative brand tiles** (lavender / gold / purple panels with sparkles, hearts, and a "be the good" script) — brand texture, not photo slots, so they do not consume the media inventory. The `/v2` hero photo list lives in `src/lib/content.ts` under `V2_HERO_PHOTOS`.
+**Layout:** Hero (scroll grid) → Who we are → Ways to show up (A's stacked cards) → Campus → Get involved → Stories → Closing + Footer.
 
 Instagram CDN thumbnails are not reliably fetchable without login. Prefer these local exports as thumbnails; keep the IG URLs as the click-through.
 

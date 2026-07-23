@@ -10,16 +10,16 @@ import { Sparkle } from "@/components/ui/Sparkle";
 
 export function Why() {
   return (
-    <section id="why" className="bg-ink px-6 py-28 text-cream md:px-10 md:py-40">
+    <section id="pillars" className="bg-ink px-6 py-28 text-cream md:px-10 md:py-40">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <p className="eyebrow flex items-center gap-2 text-lavender">
             <Sparkle className="h-3.5 w-3.5" />
-            Why Be The Good
+            What we do
           </p>
         </Reveal>
         <RevealText
-          text={"You don't just care.\nYou do."}
+          text={"Ways to\nshow up."}
           className="mt-6 max-w-3xl font-serif text-4xl font-medium leading-[1.02] tracking-tight md:text-6xl"
         />
 
