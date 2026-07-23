@@ -308,7 +308,7 @@ The site is a **single page** (the earlier A/B/C exploration routes were removed
 
 Remaining hero-grid cells use **decorative brand tiles** (lavender / gold / purple panels with sparkles, hearts, and a "be the good" script) — brand texture, not photo slots. The hero photo list lives in `src/lib/content.ts` under `HERO_PHOTOS`. The **Get involved** cards and product/pillar shots stay as the shared `ImageOrPlaceholder` (labeled) until stronger assets land. `kindnessnote.png` and `kindnessnote2.png` are different notes — never swap them.
 
-**Layout:** Hero (scroll grid) → Who we are → Campus → **Ways to show up** (get-involved beat, A's stacked cards: Volunteer / Food bank / Mentor / Sponsor, each click-to-act) → Stories → Closing + Footer.
+**Layout:** Hero (scroll grid) → Who we are → Campus → **Ways to show up** (get-involved beat, A's stacked cards: Volunteer / Food bank / Mentor / Sponsor, each click-to-act) → **Three ways we show up** (3 initiatives: Be The Good Care / Community care / Mentorship — placeholder cards + "Learn more" modal) → Stories → Closing + Footer.
 
 Instagram CDN thumbnails are not reliably fetchable without login. Prefer these local exports as thumbnails; keep the IG URLs as the click-through.
 

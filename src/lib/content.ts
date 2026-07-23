@@ -74,6 +74,7 @@ export const NAV_LINKS = [
   { label: "Who we are", href: "#about" },
   { label: "Campus", href: "#campus" },
   { label: "Ways to show up", href: "#involved" },
+  { label: "What we do", href: "#pillars" },
   { label: "Stories", href: "#stories" },
 ] as const;
 
