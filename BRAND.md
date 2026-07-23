@@ -298,9 +298,9 @@ The site is a **single page** (the earlier A/B/C exploration routes were removed
 | --- | --- | --- | --- |
 | `campusmoment.png` | col 1, row 1 | **Who we are**, left. Linked to IG | [IG post](https://www.instagram.com/p/DZksVMoAMNU/) |
 | `kindnessnote.png` | col 2, row 2 | **Who we are**, right. Linked to IG | [IG post](https://www.instagram.com/p/DZP8_7YFo56/) |
-| `campusmoments2.png` | col 3, row 1 | **Ways to show up · 01** Show up. Give time. | Note hand-off |
-| `campusmoments3.png` | col 5, row 1 | **Ways to show up · 02** Find your people. | Library / lounge interview |
-| `kindnessnote2.png` | col 3, row 3 | **Ways to show up · 03** Make someone's week. | Second note (distinct from `kindnessnote.png`) |
+| `campusmoments2.png` | col 3, row 1 | hero grid only | Note hand-off |
+| `campusmoments3.png` | col 5, row 1 | hero grid only | Library / lounge interview |
+| `kindnessnote2.png` | col 3, row 3 | hero grid only | Second note (distinct from `kindnessnote.png`) |
 | `campusmoments4.jpeg` | col 1, row 2 | **Campus** section | USC / Western portrait |
 | `campusmoments5.jpeg` | col 4, row 2 | hero grid only | Outdoor campus portrait |
 | `campusmoments6.jpeg` | col 2, row 3 | hero grid only | Concrete-wall portrait |
@@ -308,7 +308,7 @@ The site is a **single page** (the earlier A/B/C exploration routes were removed
 
 Remaining hero-grid cells use **decorative brand tiles** (lavender / gold / purple panels with sparkles, hearts, and a "be the good" script) — brand texture, not photo slots. The hero photo list lives in `src/lib/content.ts` under `HERO_PHOTOS`. The **Get involved** cards and product/pillar shots stay as the shared `ImageOrPlaceholder` (labeled) until stronger assets land. `kindnessnote.png` and `kindnessnote2.png` are different notes — never swap them.
 
-**Layout:** Hero (scroll grid) → Who we are → Ways to show up (A's stacked cards) → Campus → Get involved → Stories → Closing + Footer.
+**Layout:** Hero (scroll grid) → Who we are → Campus → **Ways to show up** (get-involved beat, A's stacked cards: Volunteer / Food bank / Mentor / Sponsor, each click-to-act) → Stories → Closing + Footer.
 
 Instagram CDN thumbnails are not reliably fetchable without login. Prefer these local exports as thumbnails; keep the IG URLs as the click-through.
 

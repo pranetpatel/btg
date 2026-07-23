@@ -72,9 +72,8 @@ export const HERO_PHOTOS = [
 export const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "Who we are", href: "#about" },
-  { label: "What we do", href: "#pillars" },
   { label: "Campus", href: "#campus" },
-  { label: "Get involved", href: "#involved" },
+  { label: "Ways to show up", href: "#involved" },
   { label: "Stories", href: "#stories" },
 ] as const;
 

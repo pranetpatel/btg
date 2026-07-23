@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   INVOLVE_TAG_STYLES,
   INVOLVE_WAYS,
@@ -9,16 +10,15 @@ import {
 } from "@/lib/content";
 import { Reveal } from "@/components/ui/Reveal";
 import { RevealText } from "@/components/ui/RevealText";
+import { ImageOrPlaceholder } from "@/components/ui/ImageOrPlaceholder";
 import { Sparkle } from "@/components/ui/Sparkle";
 import { useInvolve } from "@/lib/involve-context";
 
 export function Involved() {
-  const { openInvolve } = useInvolve();
-
   return (
     <section
       id="involved"
-      className="bg-purple-deep px-6 py-28 text-cream md:px-10 md:py-40"
+      className="bg-ink px-6 py-28 text-cream md:px-10 md:py-40"
     >
       <div className="mx-auto max-w-6xl">
         <Reveal>
@@ -28,61 +28,14 @@ export function Involved() {
           </p>
         </Reveal>
         <RevealText
-          text={"Ways to help."}
-          className="mt-6 max-w-2xl font-serif text-4xl font-medium leading-[1.02] tracking-tight md:text-6xl"
+          text={"Ways to\nshow up."}
+          className="mt-6 max-w-3xl font-serif text-4xl font-medium leading-[1.02] tracking-tight md:text-6xl"
         />
 
-        {/* Chip legend */}
-        <Reveal delay={0.1}>
-          <div className="mt-8 flex flex-wrap gap-3 text-sm">
-            {(["Drop-in", "Ongoing", "Coming soon", "Partner"] as const).map(
-              (tag) => (
-                <span
-                  key={tag}
-                  className={`rounded-full px-4 py-2 ${INVOLVE_TAG_STYLES[tag]}`}
-                >
-                  {tag}
-                </span>
-              )
-            )}
-          </div>
-        </Reveal>
-
-        <div className="mt-16 grid gap-6 sm:grid-cols-2">
+        {/* Sticky-stacked cards - each way pins and stacks, click to act */}
+        <div className="mt-20">
           {INVOLVE_WAYS.map((way, i) => (
-            <motion.button
-              key={way.title}
-              type="button"
-              onClick={() => openInvolve(way.purpose)}
-              initial={{ opacity: 0, y: 36 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10% 0px" }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: (i % 2) * 0.08 + Math.floor(i / 2) * 0.05 }}
-              className="group flex flex-col gap-4 rounded-3xl border border-cream/12 bg-purple p-7 text-left transition-all duration-500 hover:-translate-y-1.5 hover:border-cream/30"
-            >
-              <div className="flex items-center justify-between">
-                <span
-                  className={`rounded-full px-3 py-1 text-xs font-medium ${INVOLVE_TAG_STYLES[way.tag]}`}
-                >
-                  {way.tag}
-                </span>
-                <span className="text-xs uppercase tracking-widest text-lavender">
-                  {way.meta}
-                </span>
-              </div>
-              <h3 className="mt-2 font-serif text-3xl font-medium tracking-tight">
-                {way.title}
-              </h3>
-              <span className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-cream">
-                Count me in
-                <span
-                  aria-hidden
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                >
-                  →
-                </span>
-              </span>
-            </motion.button>
+            <StickyWay key={way.title} way={way} index={i} />
           ))}
         </div>
 
@@ -99,5 +52,74 @@ export function Involved() {
         </Reveal>
       </div>
     </section>
+  );
+}
+
+function StickyWay({
+  way,
+  index,
+}: {
+  way: (typeof INVOLVE_WAYS)[number];
+  index: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { openInvolve } = useInvolve();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  // Panels behind settle back slightly as the next one rises over them.
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.94]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.4]);
+
+  return (
+    <div
+      ref={ref}
+      className="sticky mx-auto"
+      style={{ top: `${6 + index * 2.5}rem` }}
+    >
+      <motion.button
+        type="button"
+        onClick={() => openInvolve(way.purpose)}
+        style={{ scale, opacity }}
+        className="group mb-8 grid w-full gap-8 overflow-hidden rounded-3xl bg-purple-deep p-6 text-left transition-colors hover:bg-purple md:grid-cols-2 md:items-center md:p-10"
+      >
+        <div className={index % 2 === 1 ? "md:order-2" : ""}>
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+            <ImageOrPlaceholder
+              src={way.image}
+              alt={way.title}
+              label={way.title}
+              className="h-full w-full"
+            />
+          </div>
+        </div>
+        <div className={index % 2 === 1 ? "md:order-1" : ""}>
+          <span className="font-serif text-6xl font-medium text-gold/80 md:text-7xl">
+            {`0${index + 1}`}
+          </span>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <h3 className="font-serif text-3xl font-medium leading-tight tracking-tight md:text-5xl">
+              {way.title}
+            </h3>
+            <span
+              className={`rounded-full px-3 py-1 text-xs font-medium ${INVOLVE_TAG_STYLES[way.tag]}`}
+            >
+              {way.tag}
+            </span>
+          </div>
+          <p className="mt-3 text-lg text-lavender">{way.meta}</p>
+          <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-cream">
+            Count me in
+            <span
+              aria-hidden
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            >
+              →
+            </span>
+          </span>
+        </div>
+      </motion.button>
+    </div>
   );
 }
