@@ -45,7 +45,7 @@ export function RevealText({
           <span key={li} className="block" aria-hidden>
             {words.map((word, wi) => (
               <Fragment key={wi}>
-                <span className="inline-flex overflow-hidden align-bottom">
+                <span className="inline-flex overflow-hidden align-bottom pb-[0.16em] -mb-[0.16em]">
                   <motion.span
                     className="inline-block"
                     variants={{

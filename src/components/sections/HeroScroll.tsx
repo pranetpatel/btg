@@ -116,6 +116,7 @@ export function HeroScroll() {
     <section
       ref={sectionRef}
       id="home"
+      data-nav-theme="light"
       className="relative bg-cream"
       style={{ height: reduced ? "auto" : "260vh" }}
     >
@@ -137,6 +138,7 @@ export function HeroScroll() {
           <motion.div
             ref={scalerRef}
             aria-hidden
+            data-nav-theme="dark"
             style={
               reduced
                 ? { gridColumnStart: 3, gridRowStart: 2 }

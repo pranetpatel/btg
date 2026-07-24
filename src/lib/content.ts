@@ -119,17 +119,17 @@ export const PILLARS: Pillar[] = [
   {
     slug: "community",
     name: "Community care",
-    blurb: "Food and hygiene kits.",
+    blurb: "Care packages.",
     image: null,
     status: "Active",
     detail:
-      "We raise money and build kits for people facing hardship across London, then get them into the right hands.",
+      "We raise money and build care packages — food, hygiene kits, and everyday essentials — for people facing hardship across London, then get them into the right hands.",
     points: [
-      { label: "What", value: "Food & hygiene kits" },
+      { label: "What", value: "Care packages" },
       { label: "For", value: "People in need" },
       { label: "Where", value: "London, ON" },
     ],
-    ctaLabel: "Sponsor a kit",
+    ctaLabel: "Sponsor a package",
     ctaPurpose: "sponsor",
   },
   {
@@ -198,6 +198,13 @@ export const INVOLVE_WAYS = [
     meta: "Peer support",
     image: null,
     purpose: "mentor" as const,
+  },
+  {
+    title: "Clinical & care settings",
+    tag: "Ongoing" as const,
+    meta: "Opportunities in clinical settings & with vulnerable populations are also available",
+    image: null,
+    purpose: "volunteer" as const,
   },
   {
     title: "Sponsor",

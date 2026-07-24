@@ -18,6 +18,7 @@ export function Involved() {
   return (
     <section
       id="involved"
+      data-nav-theme="dark"
       className="bg-ink px-6 py-28 text-cream md:px-10 md:py-40"
     >
       <div className="mx-auto max-w-6xl">

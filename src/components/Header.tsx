@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL, LOGO, NAV_LINKS } from "@/lib/content";
@@ -9,18 +9,53 @@ import { Sparkle } from "@/components/ui/Sparkle";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [navTheme, setNavTheme] = useState<"light" | "dark">("light");
+  const headerRef = useRef<HTMLElement>(null);
   const { openInvolve } = useInvolve();
+
+  // Pick text/logo color from the background directly under the header, so the
+  // nav never color-shifts (mix-blend-difference used to turn cream → green
+  // over the purple sections).
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const probeY = (headerRef.current?.offsetHeight ?? 72) + 8;
+      const el = document.elementFromPoint(window.innerWidth / 2, probeY);
+      const themed = el?.closest<HTMLElement>("[data-nav-theme]");
+      const theme = themed?.dataset.navTheme;
+      if (theme === "light" || theme === "dark") setNavTheme(theme);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
     <>
-      <header className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-4 text-cream mix-blend-difference md:px-10 md:py-5">
+      <header
+        ref={headerRef}
+        className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-4 transition-colors duration-300 md:px-10 md:py-5 ${
+          navTheme === "dark" ? "text-cream" : "text-ink"
+        }`}
+      >
         <a href="#home" className="flex items-center gap-3">
           <Image
             src={LOGO}
             alt="Be The Good"
             width={48}
             height={48}
-            className="h-11 w-11 object-contain md:h-12 md:w-12"
+            className={`h-11 w-11 object-contain transition-[filter] duration-300 md:h-12 md:w-12 ${
+              navTheme === "light" ? "brightness-0" : ""
+            }`}
             priority
           />
           <span className="font-serif text-lg font-medium tracking-tight">

@@ -13,7 +13,7 @@ export function ClosingCta() {
   const { openInvolve } = useInvolve();
 
   return (
-    <section className="bg-cream text-ink">
+    <section data-nav-theme="light" className="bg-cream text-ink">
       <div className="px-6 pt-28 md:px-10 md:pt-40">
         <div className="mx-auto max-w-4xl text-center">
           <Reveal>

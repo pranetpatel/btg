@@ -32,7 +32,7 @@ export function Stories() {
   const rowA = [...STORIES, ...STORIES];
 
   return (
-    <section id="stories" className="overflow-hidden bg-ink py-28 text-cream md:py-40">
+    <section id="stories" data-nav-theme="dark" className="overflow-hidden bg-ink py-28 text-cream md:py-40">
       <div className="mx-auto max-w-6xl px-6 md:px-10">
         <Reveal>
           <p className="eyebrow flex items-center gap-2 text-lavender">

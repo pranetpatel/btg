@@ -13,6 +13,7 @@ export function Introduction() {
   return (
     <section
       id="about"
+      data-nav-theme="light"
       className="relative overflow-hidden bg-cream px-6 py-28 md:px-10 md:py-40"
     >
       <Sparkle className="absolute right-[10%] top-[16%] h-6 w-6" twinkle />

@@ -4,7 +4,7 @@ import { InstagramIcon } from "@/components/ui/InstagramIcon";
 
 export function Footer() {
   return (
-    <footer className="bg-cream px-6 pb-10 pt-4 text-ink md:px-10">
+    <footer data-nav-theme="light" className="bg-cream px-6 pb-10 pt-4 text-ink md:px-10">
       <div className="mx-auto max-w-6xl border-t border-purple/15 pt-14">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">

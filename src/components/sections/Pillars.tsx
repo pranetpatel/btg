@@ -16,6 +16,7 @@ export function Pillars() {
   return (
     <section
       id="pillars"
+      data-nav-theme="dark"
       className="bg-purple px-6 py-28 text-cream md:px-10 md:py-40"
     >
       <div className="mx-auto max-w-6xl">

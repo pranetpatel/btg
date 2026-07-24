@@ -10,7 +10,7 @@ export function Campus() {
   const { openInvolve } = useInvolve();
 
   return (
-    <section id="campus" className="bg-cream px-6 py-28 md:px-10 md:py-40">
+    <section id="campus" data-nav-theme="light" className="bg-cream px-6 py-28 md:px-10 md:py-40">
       <div className="mx-auto grid max-w-6xl gap-14 md:grid-cols-2 md:items-center">
         <div>
           <Reveal>
