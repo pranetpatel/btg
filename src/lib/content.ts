@@ -123,7 +123,7 @@ export const PILLARS: Pillar[] = [
     image: null,
     status: "Active",
     detail:
-      "We raise money and build care packages — food, hygiene kits, and everyday essentials — for people facing hardship across London, then get them into the right hands.",
+      "We raise money and build care packages with food, hygiene kits, and everyday essentials for people facing hardship across London, then get them into the right hands.",
     points: [
       { label: "What", value: "Care packages" },
       { label: "For", value: "People in need" },

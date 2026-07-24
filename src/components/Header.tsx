@@ -53,9 +53,7 @@ export function Header() {
             alt="Be The Good"
             width={48}
             height={48}
-            className={`h-11 w-11 object-contain transition-[filter] duration-300 md:h-12 md:w-12 ${
-              navTheme === "light" ? "brightness-0" : ""
-            }`}
+            className="h-11 w-11 object-contain md:h-12 md:w-12"
             priority
           />
           <span className="font-serif text-lg font-medium tracking-tight">

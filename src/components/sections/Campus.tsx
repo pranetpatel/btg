@@ -2,7 +2,6 @@
 
 import { Reveal } from "@/components/ui/Reveal";
 import { RevealText } from "@/components/ui/RevealText";
-import { ImageOrPlaceholder } from "@/components/ui/ImageOrPlaceholder";
 import { Sparkle } from "@/components/ui/Sparkle";
 import { useInvolve } from "@/lib/involve-context";
 
@@ -44,11 +43,12 @@ export function Campus() {
 
         <Reveal delay={0.1}>
           <div className="relative aspect-square w-full overflow-hidden rounded-3xl">
-            <ImageOrPlaceholder
-              src={null}
-              alt="Western University campus"
-              label="Campus · Western"
-              className="h-full w-full"
+            <iframe
+              title="Western University on the map"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-81.2837%2C43.0016%2C-81.2637%2C43.0176&layer=mapnik&marker=43.0096%2C-81.2737"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="h-full w-full border-0"
             />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 via-ink/20 to-transparent p-6 pt-20">
               <p className="font-serif text-lg text-cream">London, ON</p>
