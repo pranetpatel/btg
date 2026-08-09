@@ -187,6 +187,14 @@ Honest need without oversharing personal finance on the public site:
 
 **Sponsor benefits to offer (draft):** logo on site & event materials, IG shoutouts, volunteer day for employees/alumni, impact updates.
 
+**Current sponsors** (live on the site in `SPONSORS`, `src/lib/content.ts`):
+
+| Sponsor | Site | Instagram |
+| --- | --- | --- |
+| Bar 6ix Restaurant and Grill | [bar6.ca](https://www.bar6.ca) | [@bar6ix](https://www.instagram.com/bar6ix/) |
+
+Named on the homepage **Sponsors** section (`#sponsors`) and in the footer "Supported by" row. Logos are `null` until a partner sends artwork; the card falls back to their name in the serif face, so no logo file is required to ship a sponsor.
+
 ### Closing CTA
 “Join the movement.” + secondary “DM us / Contact” + Instagram.
 
@@ -308,7 +316,7 @@ The site is a **single page** (the earlier A/B/C exploration routes were removed
 
 Remaining hero-grid cells use **decorative brand tiles** (lavender / gold / purple panels with sparkles, hearts, and a "be the good" script) — brand texture, not photo slots. The hero photo list lives in `src/lib/content.ts` under `HERO_PHOTOS`. The **Get involved** cards and product/pillar shots stay as the shared `ImageOrPlaceholder` (labeled) until stronger assets land. `kindnessnote.png` and `kindnessnote2.png` are different notes — never swap them.
 
-**Layout:** Hero (scroll grid) → Who we are → Campus → **Ways to show up** (get-involved beat, A's stacked cards: Volunteer / Food bank / Mentor / Sponsor, each click-to-act) → **Three ways we show up** (3 initiatives: Be The Good Care / Community care / Mentorship — placeholder cards + "Learn more" modal) → Stories → Closing + Footer.
+**Layout:** Hero (scroll grid) → Who we are → Campus → **Ways to show up** (get-involved beat, A's stacked cards: Volunteer / Food bank / Mentor / Sponsor, each click-to-act) → **Three ways we show up** (3 initiatives: Be The Good Care / Community care / Mentorship — placeholder cards + "Learn more" modal) → Stories → **Sponsors** ("Backed by good people", partner cards + an open "Your name here" slot that opens the sponsor modal) → Closing + Footer.
 
 Instagram CDN thumbnails are not reliably fetchable without login. Prefer these local exports as thumbnails; keep the IG URLs as the click-through.
 

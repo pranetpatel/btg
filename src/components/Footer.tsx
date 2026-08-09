@@ -1,5 +1,11 @@
 import Image from "next/image";
-import { INSTAGRAM_HANDLE, INSTAGRAM_URL, LOGO, NAV_LINKS } from "@/lib/content";
+import {
+  INSTAGRAM_HANDLE,
+  INSTAGRAM_URL,
+  LOGO,
+  NAV_LINKS,
+  SPONSORS,
+} from "@/lib/content";
 import { InstagramIcon } from "@/components/ui/InstagramIcon";
 
 export function Footer() {
@@ -58,7 +64,38 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-2 border-t border-purple/15 pt-6 text-xs text-ink/50 md:flex-row md:items-center md:justify-between">
+        <div className="mt-14 border-t border-purple/15 pt-8">
+          <p className="eyebrow text-purple/60">Supported by</p>
+          <div className="mt-4 flex flex-col gap-x-8 gap-y-4 md:flex-row md:flex-wrap md:items-center">
+            {SPONSORS.map((sponsor) => (
+              <div
+                key={sponsor.name}
+                className="flex flex-wrap items-center gap-x-4 gap-y-2"
+              >
+                <a
+                  href={sponsor.website}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-serif text-xl font-medium tracking-tight text-purple transition-opacity hover:opacity-70"
+                >
+                  {sponsor.name}
+                </a>
+                <a
+                  href={sponsor.instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Instagram ${sponsor.instagramHandle}`}
+                  className="inline-flex items-center gap-1.5 text-sm text-ink/60 transition-colors hover:text-purple"
+                >
+                  <InstagramIcon className="h-4 w-4" />
+                  {sponsor.instagramHandle}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col gap-2 border-t border-purple/15 pt-6 text-xs text-ink/50 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Be The Good · Western University</p>
           <p>Student-led nonprofit · London, Ontario</p>
         </div>

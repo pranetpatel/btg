@@ -6,6 +6,7 @@ import { Campus } from "@/components/sections/Campus";
 import { Involved } from "@/components/sections/Involved";
 import { Pillars } from "@/components/sections/Pillars";
 import { Stories } from "@/components/sections/Stories";
+import { Sponsors } from "@/components/sections/Sponsors";
 import { ClosingCta } from "@/components/sections/ClosingCta";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
         <Involved />
         <Pillars />
         <Stories />
+        <Sponsors />
         <ClosingCta />
       </main>
       <Footer />

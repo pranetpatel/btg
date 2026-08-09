@@ -76,6 +76,7 @@ export const NAV_LINKS = [
   { label: "Ways to show up", href: "#involved" },
   { label: "What we do", href: "#pillars" },
   { label: "Stories", href: "#stories" },
+  { label: "Sponsors", href: "#sponsors" },
 ] as const;
 
 /* ── Three pillars (BRAND.md §6) ─────────────────────────────────────── */
@@ -221,6 +222,31 @@ export const INVOLVE_TAG_STYLES: Record<string, string> = {
   "Coming soon": "bg-gold/20 text-gold",
   Partner: "bg-cream text-purple",
 };
+
+/* ── Sponsors / partners (BRAND.md §7 sponsor block) ─────────────────
+   Real partners only. Logo stays null until the partner sends artwork,
+   and the card falls back to their name set in the serif display face. */
+export type Sponsor = {
+  name: string;
+  blurb: string;
+  website: string;
+  websiteLabel: string;
+  instagram: string;
+  instagramHandle: string;
+  logo: string | null;
+};
+
+export const SPONSORS: Sponsor[] = [
+  {
+    name: "Bar 6ix Restaurant and Grill",
+    blurb: "Sports, wings, and a seat at the table for our work.",
+    website: "https://www.bar6.ca",
+    websiteLabel: "bar6.ca",
+    instagram: "https://www.instagram.com/bar6ix/",
+    instagramHandle: "@bar6ix",
+    logo: null,
+  },
+];
 
 /* ── Stories / campus culture ────────────────────────────────────────
    Real program moments and clearly labeled photo placeholders. No
