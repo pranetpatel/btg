@@ -38,20 +38,19 @@ export function Sponsors() {
           {SPONSORS.map((sponsor, i) => (
             <Reveal key={sponsor.name} delay={0.1 + i * 0.08}>
               <div className="flex h-full flex-col gap-6 rounded-3xl bg-cream p-8 md:p-10">
-                <div className="flex min-h-24 items-center">
-                  {sponsor.logo ? (
+                <div className="flex min-h-24 items-center gap-5">
+                  {sponsor.logo && (
                     <Image
                       src={sponsor.logo}
-                      alt={sponsor.name}
-                      width={220}
-                      height={96}
-                      className="h-20 w-auto object-contain object-left"
+                      alt={`${sponsor.name} logo`}
+                      width={192}
+                      height={192}
+                      className="h-20 w-20 shrink-0 rounded-2xl object-cover md:h-24 md:w-24"
                     />
-                  ) : (
-                    <p className="font-serif text-3xl font-medium leading-tight tracking-tight text-purple md:text-4xl">
-                      {sponsor.name}
-                    </p>
                   )}
+                  <p className="font-serif text-3xl font-medium leading-tight tracking-tight text-purple md:text-4xl">
+                    {sponsor.name}
+                  </p>
                 </div>
 
                 <p className="text-lg text-ink/70">{sponsor.blurb}</p>
@@ -87,9 +86,14 @@ export function Sponsors() {
               onClick={() => openInvolve("sponsor")}
               className="group flex h-full w-full flex-col justify-between gap-6 rounded-3xl border border-dashed border-purple/30 p-8 text-left transition-colors hover:border-purple/60 hover:bg-cream/60 md:p-10"
             >
-              <p className="font-serif text-3xl font-medium leading-tight tracking-tight text-purple/50 md:text-4xl">
-                Your name here.
-              </p>
+              <div className="flex min-h-24 items-center gap-5">
+                <span className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-dashed border-purple/30 md:h-24 md:w-24">
+                  <Sparkle className="h-6 w-6 text-purple/30" />
+                </span>
+                <p className="font-serif text-3xl font-medium leading-tight tracking-tight text-purple/50 md:text-4xl">
+                  Your name here.
+                </p>
+              </div>
               <p className="text-lg text-ink/60">
                 Fund a round of care packages and we will say it loud.
               </p>

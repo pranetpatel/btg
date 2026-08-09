@@ -76,9 +76,20 @@ export function Footer() {
                   href={sponsor.website}
                   target="_blank"
                   rel="noreferrer"
-                  className="font-serif text-xl font-medium tracking-tight text-purple transition-opacity hover:opacity-70"
+                  className="flex items-center gap-3 transition-opacity hover:opacity-70"
                 >
-                  {sponsor.name}
+                  {sponsor.logo && (
+                    <Image
+                      src={sponsor.logo}
+                      alt={`${sponsor.name} logo`}
+                      width={96}
+                      height={96}
+                      className="h-11 w-11 rounded-xl object-cover"
+                    />
+                  )}
+                  <span className="font-serif text-xl font-medium tracking-tight text-purple">
+                    {sponsor.name}
+                  </span>
                 </a>
                 <a
                   href={sponsor.instagram}

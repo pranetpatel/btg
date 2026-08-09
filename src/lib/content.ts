@@ -225,7 +225,10 @@ export const INVOLVE_TAG_STYLES: Record<string, string> = {
 
 /* ── Sponsors / partners (BRAND.md §7 sponsor block) ─────────────────
    Real partners only. Logo stays null until the partner sends artwork,
-   and the card falls back to their name set in the serif display face. */
+   and the card falls back to their name set in the serif display face.
+   Partner logos arrive as squares with their own baked-in background
+   (no transparency), so they render as a rounded tile, never floated on
+   cream. The name always sits beside the mark so the credit reads. */
 export type Sponsor = {
   name: string;
   blurb: string;
@@ -244,7 +247,7 @@ export const SPONSORS: Sponsor[] = [
     websiteLabel: "bar6.ca",
     instagram: "https://www.instagram.com/bar6ix/",
     instagramHandle: "@bar6ix",
-    logo: null,
+    logo: "/Bar6ixLogo.jpg",
   },
 ];
 

@@ -189,11 +189,13 @@ Honest need without oversharing personal finance on the public site:
 
 **Current sponsors** (live on the site in `SPONSORS`, `src/lib/content.ts`):
 
-| Sponsor | Site | Instagram |
-| --- | --- | --- |
-| Bar 6ix Restaurant and Grill | [bar6.ca](https://www.bar6.ca) | [@bar6ix](https://www.instagram.com/bar6ix/) |
+| Sponsor | Site | Instagram | Logo |
+| --- | --- | --- | --- |
+| Bar 6ix Restaurant and Grill | [bar6.ca](https://www.bar6.ca) | [@bar6ix](https://www.instagram.com/bar6ix/) | `/Bar6ixLogo.jpg` |
 
-Named on the homepage **Sponsors** section (`#sponsors`) and in the footer "Supported by" row. Logos are `null` until a partner sends artwork; the card falls back to their name in the serif face, so no logo file is required to ship a sponsor.
+Named on the homepage **Sponsors** section (`#sponsors`) and in the footer "Supported by" row. Logo may be `null` until a partner sends artwork; the name carries the credit either way, so no logo file is required to ship a sponsor.
+
+**Rule for partner logos:** they come with their own baked-in background (Bar 6ix is white and gold on a black square, no transparency), so render them as a **rounded square tile** at a fixed size, never floated on cream and never recolored. The tile is the logo's own artwork, so there is no seam. Partner marks are the only place non-brand colors are allowed on the site. Do not apply the `/logowhite-removebg.png` transparent-logo rule from §12 to sponsor art.
 
 ### Closing CTA
 “Join the movement.” + secondary “DM us / Contact” + Instagram.
@@ -297,6 +299,7 @@ These override the longer sample copy above wherever they conflict. The public s
 | `logowhite-removebg.png` | **Primary.** Transparent mark for nav, hero, menu, closing, footer |
 | `logowhite.png` | Backup only (white box). Avoid on colored backgrounds |
 | `logoblack.png` | Backup only (dark box). Avoid on colored backgrounds |
+| `Bar6ixLogo.jpg` | Sponsor mark (Bar 6ix). Rounded square tile only, in **Sponsors** + footer. See §7 |
 
 ### Culture / campus photos
 
