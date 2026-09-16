@@ -1,79 +1,86 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
-import path from "node:path";
+import type { InvolvePurpose, VolunteerInterest } from "@/lib/content";
+import { supabaseServer } from "./client";
 import type { InvolveSignup, SignupStore } from "./types";
-
-/**
- * Temporary JSON-file store. Swap `signupStore` for a Supabase adapter
- * without changing the server action or modal — keep `create` / `list`.
- */
-const LOCAL_SIGNUPS_FILE = path.join(
-  /* turbopackIgnore: true */ process.cwd(),
-  ".data",
-  "signups.json"
-);
-
-function signupsFilePath() {
-  return process.env.VERCEL ? "/tmp/btg-signups.json" : LOCAL_SIGNUPS_FILE;
-}
-
-let writeChain: Promise<unknown> = Promise.resolve();
-
-function withLock<T>(fn: () => Promise<T>): Promise<T> {
-  const run = writeChain.then(fn, fn);
-  writeChain = run.then(
-    () => undefined,
-    () => undefined
-  );
-  return run;
-}
-
-async function readAll(): Promise<InvolveSignup[]> {
-  try {
-    const raw = await readFile(signupsFilePath(), "utf8");
-    const parsed = JSON.parse(raw) as unknown;
-    return Array.isArray(parsed) ? (parsed as InvolveSignup[]) : [];
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") return [];
-    throw error;
-  }
-}
-
-async function writeAll(signups: InvolveSignup[]) {
-  const file = signupsFilePath();
-  await mkdir(path.dirname(file), { recursive: true });
-  await writeFile(file, JSON.stringify(signups, null, 2), "utf8");
-}
 
 export function normalizeEmail(email: string) {
   return email.trim().toLowerCase();
 }
 
-const fileSignupStore: SignupStore = {
-  async create(input) {
-    return withLock(async () => {
-      const signups = await readAll();
-      const existing = signups.find(
-        (row) => normalizeEmail(row.email) === normalizeEmail(input.email)
-      );
-      if (existing) {
-        return { status: "duplicate" as const, signup: existing };
-      }
+type SignupRow = {
+  id: string;
+  created_at: string;
+  name: string;
+  email: string;
+  note: string | null;
+  purpose: InvolvePurpose;
+  phone: string | null;
+  western_student: boolean | null;
+  interests: string[] | null;
+};
 
-      const signup: InvolveSignup = {
-        ...input,
-        id: crypto.randomUUID(),
-        createdAt: new Date().toISOString(),
-      };
-      signups.push(signup);
-      await writeAll(signups);
-      return { status: "created" as const, signup };
-    });
+function fromRow(row: SignupRow): InvolveSignup {
+  return {
+    id: row.id,
+    createdAt: row.created_at,
+    name: row.name,
+    email: row.email,
+    note: row.note ?? "",
+    purpose: row.purpose,
+    ...(row.phone ? { phone: row.phone } : {}),
+    ...(typeof row.western_student === "boolean"
+      ? { westernStudent: row.western_student }
+      : {}),
+    ...(row.interests?.length
+      ? { interests: row.interests as VolunteerInterest[] }
+      : {}),
+  };
+}
+
+const supabaseSignupStore: SignupStore = {
+  async create(input) {
+    const db = supabaseServer();
+    const email = normalizeEmail(input.email);
+    const payload = {
+      name: input.name,
+      email,
+      note: input.note ?? "",
+      purpose: input.purpose,
+      phone: input.phone ?? null,
+      western_student: input.westernStudent ?? null,
+      interests: input.interests ?? [],
+    };
+
+    const { data, error } = await db
+      .from("involve_signups")
+      .insert(payload)
+      .select("*")
+      .single();
+
+    if (error?.code === "23505") {
+      const existing = await db
+        .from("involve_signups")
+        .select("*")
+        .eq("email", email)
+        .maybeSingle();
+      if (existing.data) {
+        return { status: "duplicate", signup: fromRow(existing.data as SignupRow) };
+      }
+      throw error;
+    }
+
+    if (error || !data) throw error ?? new Error("Signup did not save.");
+    return { status: "created", signup: fromRow(data as SignupRow) };
   },
 
   async list() {
-    const signups = await readAll();
-    return [...signups].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    const { data, error } = await supabaseServer()
+      .from("involve_signups")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) throw error;
+    return (data as SignupRow[] | null)?.map(fromRow) ?? [];
   },
 };
 
-export const signupStore: SignupStore = fileSignupStore;
+export const signupStore: SignupStore = supabaseSignupStore;
