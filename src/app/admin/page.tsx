@@ -6,9 +6,11 @@ import {
 import { isAdminConfigured, isAdminSession } from "@/lib/signups/admin";
 import { getSignupsForAdmin } from "@/lib/signups/actions";
 import type { InvolveSignup } from "@/lib/signups/types";
-import { logoutAdmin } from "./actions";
+import { listEventsBySignup } from "@/lib/events/actions";
 import { AdminLoginForm } from "./login-form";
 import { AddPersonForm } from "./add-person-form";
+import { CopyButton } from "@/components/CopyButton";
+import { VolunteerSignupLink } from "./volunteer-signup-link";
 
 export const metadata: Metadata = {
   title: "Signups · Be The Good",
@@ -54,30 +56,28 @@ export default async function AdminPage() {
     );
   }
 
-  const signups = (await getSignupsForAdmin()) ?? [];
+  const [signups, eventsBySignup] = await Promise.all([
+    getSignupsForAdmin(),
+    listEventsBySignup(),
+  ]);
+  const rows = signups ?? [];
+  const emails = rows.map((r) => r.email).filter((e): e is string => Boolean(e));
+  const handles = rows
+    .map((r) => r.instagram)
+    .filter((h): h is string => Boolean(h));
 
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-16 md:px-10">
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p className="eyebrow text-purple/70">Private</p>
-          <h1 className="mt-4 font-serif text-4xl font-medium tracking-tight">
-            Signups
-          </h1>
-          <p className="mt-3 text-sm text-ink/70">
-            {signups.length === 0
-              ? "Nobody’s landed yet. Get Involved on the site writes here."
-              : `${signups.length} ${signups.length === 1 ? "person" : "people"} on the list.`}
-          </p>
-        </div>
-        <form action={logoutAdmin}>
-          <button
-            type="submit"
-            className="rounded-full border border-purple/20 px-5 py-2.5 text-sm font-medium text-purple transition-colors hover:bg-purple/5"
-          >
-            Log out
-          </button>
-        </form>
+      <div>
+        <p className="eyebrow text-purple/70">Private</p>
+        <h1 className="mt-4 font-serif text-4xl font-medium tracking-tight">
+          Signups
+        </h1>
+        <p className="mt-3 text-sm text-ink/70">
+          {rows.length === 0
+            ? "Nobody’s landed yet. Get Involved on the site writes here."
+            : `${rows.length} ${rows.length === 1 ? "person" : "people"} on the list.`}
+        </p>
       </div>
 
       <div className="mt-8 rounded-3xl border border-purple/10 bg-lavender-soft/40 p-6">
@@ -85,7 +85,20 @@ export default async function AdminPage() {
         <AddPersonForm />
       </div>
 
-      {signups.length === 0 ? null : (
+      <div className="mt-6 flex flex-wrap items-center gap-3 rounded-3xl border border-purple/10 p-6">
+        <p className="eyebrow mr-2 text-purple/70">Everyone</p>
+        <CopyButton
+          label={`Copy emails (${emails.length})`}
+          getText={() => emails.join(", ")}
+        />
+        <CopyButton
+          label={`Copy Instagram handles (${handles.length})`}
+          getText={() => handles.map((h) => `@${h}`).join(", ")}
+        />
+        <VolunteerSignupLink />
+      </div>
+
+      {rows.length === 0 ? null : (
         <div className="mt-10 overflow-x-auto rounded-3xl border border-purple/10">
           <table className="min-w-full text-left text-sm">
             <thead className="bg-lavender-soft/60 text-xs font-medium uppercase tracking-widest text-ink/50">
@@ -95,12 +108,17 @@ export default async function AdminPage() {
                 <th className="px-4 py-3">Instagram</th>
                 <th className="px-4 py-3">Email</th>
                 <th className="px-4 py-3">Path</th>
+                <th className="px-4 py-3">Events</th>
                 <th className="px-4 py-3">Details</th>
               </tr>
             </thead>
             <tbody>
-              {signups.map((row) => (
-                <SignupRow key={row.id} signup={row} />
+              {rows.map((row) => (
+                <SignupRow
+                  key={row.id}
+                  signup={row}
+                  events={eventsBySignup.get(row.id) ?? []}
+                />
               ))}
             </tbody>
           </table>
@@ -110,7 +128,13 @@ export default async function AdminPage() {
   );
 }
 
-function SignupRow({ signup }: { signup: InvolveSignup }) {
+function SignupRow({
+  signup,
+  events,
+}: {
+  signup: InvolveSignup;
+  events: string[];
+}) {
   const extras = [
     signup.phone,
     signup.westernStudent === true
@@ -162,6 +186,22 @@ function SignupRow({ signup }: { signup: InvolveSignup }) {
         )}
       </td>
       <td className="px-4 py-4">{PURPOSE_LABEL[signup.purpose]}</td>
+      <td className="max-w-[14rem] px-4 py-4">
+        {events.length ? (
+          <div className="flex flex-wrap gap-1.5">
+            {events.map((title) => (
+              <span
+                key={title}
+                className="rounded-full bg-lavender/25 px-2.5 py-1 text-xs font-medium text-lavender"
+              >
+                {title}
+              </span>
+            ))}
+          </div>
+        ) : (
+          "—"
+        )}
+      </td>
       <td className="max-w-sm px-4 py-4 text-ink/70">
         {extras.length ? extras.join(" · ") : "—"}
       </td>

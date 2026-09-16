@@ -3,6 +3,7 @@ import { DM_Sans, Fraunces, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import { InvolveProvider } from "@/lib/involve-context";
 import { InvolveModal } from "@/components/InvolveModal";
+import { InvolveAutoOpen } from "@/components/InvolveAutoOpen";
 import { MotionProvider } from "@/components/MotionProvider";
 
 const sans = DM_Sans({
@@ -46,6 +47,7 @@ export default function RootLayout({
           <InvolveProvider>
             {children}
             <InvolveModal />
+            <InvolveAutoOpen />
           </InvolveProvider>
         </MotionProvider>
       </body>
