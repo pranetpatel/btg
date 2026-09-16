@@ -7,7 +7,7 @@ import {
   type VolunteerInterest,
 } from "@/lib/content";
 import { isAdminSession } from "./admin";
-import { normalizeEmail, signupStore } from "./store";
+import { normalizeEmail, normalizeInstagram, signupStore } from "./store";
 import type { CreateSignupInput, CreateSignupResult, InvolveSignup } from "./types";
 
 const PURPOSES = Object.keys(PURPOSE_LABEL) as InvolvePurpose[];
@@ -84,4 +84,50 @@ export async function submitInvolveSignup(
 export async function getSignupsForAdmin(): Promise<InvolveSignup[] | null> {
   if (!(await isAdminSession())) return null;
   return signupStore.list();
+}
+
+export type AddSignupAsAdminInput = {
+  name: string;
+  instagram?: string;
+  email?: string;
+  purpose: InvolvePurpose;
+  note?: string;
+};
+
+export async function addSignupAsAdmin(
+  input: AddSignupAsAdminInput
+): Promise<CreateSignupResult> {
+  if (!(await isAdminSession())) {
+    return { ok: false, error: "Not authorized." };
+  }
+
+  const name = cleanText(input.name, 80);
+  const instagram = normalizeInstagram(cleanText(input.instagram, 60));
+  const email = normalizeEmail(cleanText(input.email, 254));
+  const note = cleanText(input.note, 1000);
+  const purpose = parsePurpose(input.purpose) ?? "volunteer";
+
+  if (!name) return { ok: false, error: "Add a name." };
+  if (!instagram && !email) {
+    return { ok: false, error: "Add an Instagram handle or an email." };
+  }
+  if (email && !EMAIL_RE.test(email)) {
+    return { ok: false, error: "That email doesn’t look quite right." };
+  }
+
+  const record: Omit<InvolveSignup, "id" | "createdAt"> = {
+    name,
+    note,
+    purpose,
+    addedByAdmin: true,
+    ...(instagram ? { instagram } : {}),
+    ...(email ? { email } : {}),
+  };
+
+  try {
+    const result = await signupStore.create(record);
+    return { ok: true, ...result };
+  } catch {
+    return { ok: false, error: "Couldn’t save that just now. Try again." };
+  }
 }

@@ -17,16 +17,32 @@ create table if not exists public.involve_signups (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
   name text not null check (char_length(name) between 1 and 80),
-  email text not null check (char_length(email) between 3 and 254),
+  email text check (email is null or char_length(email) between 3 and 254),
+  instagram text check (instagram is null or char_length(instagram) between 1 and 60),
   note text not null default '' check (char_length(note) <= 1000),
   purpose text not null check (purpose in ('volunteer', 'mentor', 'sponsor', 'care', 'general')),
   phone text check (phone is null or char_length(phone) <= 40),
   western_student boolean,
-  interests text[] not null default '{}'::text[]
+  interests text[] not null default '{}'::text[],
+  added_by_admin boolean not null default false,
+  constraint involve_signups_contact_check check (email is not null or instagram is not null)
 );
 
 create unique index if not exists involve_signups_email_lower_idx
   on public.involve_signups (lower(email));
+
+create unique index if not exists involve_signups_instagram_lower_idx
+  on public.involve_signups (lower(instagram));
+
+-- Migration for an existing table created before instagram/admin support:
+-- alter table public.involve_signups add column if not exists instagram text;
+-- alter table public.involve_signups add column if not exists added_by_admin boolean not null default false;
+-- alter table public.involve_signups alter column email drop not null;
+-- alter table public.involve_signups drop constraint if exists involve_signups_email_check;
+-- alter table public.involve_signups add constraint involve_signups_email_check check (email is null or char_length(email) between 3 and 254);
+-- alter table public.involve_signups add constraint involve_signups_instagram_check check (instagram is null or char_length(instagram) between 1 and 60);
+-- alter table public.involve_signups add constraint involve_signups_contact_check check (email is not null or instagram is not null);
+-- create unique index if not exists involve_signups_instagram_lower_idx on public.involve_signups (lower(instagram));
 
 create or replace function private.involve_server_ok()
 returns boolean

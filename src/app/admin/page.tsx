@@ -8,6 +8,7 @@ import { getSignupsForAdmin } from "@/lib/signups/actions";
 import type { InvolveSignup } from "@/lib/signups/types";
 import { logoutAdmin } from "./actions";
 import { AdminLoginForm } from "./login-form";
+import { AddPersonForm } from "./add-person-form";
 
 export const metadata: Metadata = {
   title: "Signups · Be The Good",
@@ -79,6 +80,11 @@ export default async function AdminPage() {
         </form>
       </div>
 
+      <div className="mt-8 rounded-3xl border border-purple/10 bg-lavender-soft/40 p-6">
+        <p className="eyebrow text-purple/70">Add a person</p>
+        <AddPersonForm />
+      </div>
+
       {signups.length === 0 ? null : (
         <div className="mt-10 overflow-x-auto rounded-3xl border border-purple/10">
           <table className="min-w-full text-left text-sm">
@@ -86,6 +92,7 @@ export default async function AdminPage() {
               <tr>
                 <th className="px-4 py-3">When</th>
                 <th className="px-4 py-3">Name</th>
+                <th className="px-4 py-3">Instagram</th>
                 <th className="px-4 py-3">Email</th>
                 <th className="px-4 py-3">Path</th>
                 <th className="px-4 py-3">Details</th>
@@ -120,14 +127,39 @@ function SignupRow({ signup }: { signup: InvolveSignup }) {
       <td className="whitespace-nowrap px-4 py-4 text-ink/60">
         {formatWhen(signup.createdAt)}
       </td>
-      <td className="px-4 py-4 font-medium">{signup.name}</td>
+      <td className="px-4 py-4 font-medium">
+        {signup.name}
+        {signup.addedByAdmin ? (
+          <span className="ml-2 rounded-full bg-purple/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-widest text-purple/70">
+            Added
+          </span>
+        ) : null}
+      </td>
       <td className="px-4 py-4">
-        <a
-          href={`mailto:${signup.email}`}
-          className="underline underline-offset-2 hover:text-purple"
-        >
-          {signup.email}
-        </a>
+        {signup.instagram ? (
+          <a
+            href={`https://www.instagram.com/${signup.instagram}/`}
+            target="_blank"
+            rel="noreferrer"
+            className="underline underline-offset-2 hover:text-purple"
+          >
+            @{signup.instagram}
+          </a>
+        ) : (
+          "—"
+        )}
+      </td>
+      <td className="px-4 py-4">
+        {signup.email ? (
+          <a
+            href={`mailto:${signup.email}`}
+            className="underline underline-offset-2 hover:text-purple"
+          >
+            {signup.email}
+          </a>
+        ) : (
+          "—"
+        )}
       </td>
       <td className="px-4 py-4">{PURPOSE_LABEL[signup.purpose]}</td>
       <td className="max-w-sm px-4 py-4 text-ink/70">
