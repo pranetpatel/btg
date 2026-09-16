@@ -99,6 +99,24 @@ export type InvolvePurpose =
   | "sponsor"
   | "care";
 
+export const VOLUNTEER_INTERESTS = [
+  { value: "food_bank", label: "Food bank" },
+  { value: "kits", label: "Kit builds" },
+  { value: "kindness_drops", label: "Kindness drops" },
+  { value: "mentorship", label: "Mentorship" },
+  { value: "care_team", label: "Care team" },
+] as const;
+
+export type VolunteerInterest = (typeof VOLUNTEER_INTERESTS)[number]["value"];
+
+export const PURPOSE_LABEL: Record<InvolvePurpose, string> = {
+  volunteer: "Volunteer",
+  mentor: "Become a mentor",
+  sponsor: "Sponsor the work",
+  care: "Be The Good Care team",
+  general: "Say hi",
+};
+
 export const PILLARS: Pillar[] = [
   {
     slug: "care",
