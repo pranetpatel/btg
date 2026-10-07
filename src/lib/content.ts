@@ -267,6 +267,15 @@ export const SPONSORS: Sponsor[] = [
     instagramHandle: "@bar6ix",
     logo: "/Bar6ixLogo.jpg",
   },
+  {
+    name: "Vanish",
+    blurb: "The iPhone location changer. Backing campus kindness from anywhere on Earth.",
+    website: "https://getvanish.app/",
+    websiteLabel: "getvanish.app",
+    instagram: "https://www.instagram.com/getvanishapp/",
+    instagramHandle: "@getvanishapp",
+    logo: null,
+  },
 ];
 
 /* ── Stories / campus culture ────────────────────────────────────────
