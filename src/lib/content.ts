@@ -274,7 +274,7 @@ export const SPONSORS: Sponsor[] = [
     websiteLabel: "getvanish.app",
     instagram: "https://www.instagram.com/getvanishapp/",
     instagramHandle: "@getvanishapp",
-    logo: null,
+    logo: "/VanishLogo.png",
   },
 ];
 
